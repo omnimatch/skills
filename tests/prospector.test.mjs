@@ -5,29 +5,29 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
 import { promisify } from 'node:util';
-import { demoRun } from '../skills/rainmaker/scripts/lib/demo.mjs';
-import { runResearch } from '../skills/rainmaker/scripts/lib/engine.mjs';
-import { readJson, saveJson } from '../skills/rainmaker/scripts/lib/files.mjs';
+import { demoRun } from '../skills/prospector/scripts/lib/demo.mjs';
+import { runResearch } from '../skills/prospector/scripts/lib/engine.mjs';
+import { readJson, saveJson } from '../skills/prospector/scripts/lib/files.mjs';
 import {
   canonicalUrl,
   summarize,
   validatePlan,
-} from '../skills/rainmaker/scripts/lib/plan.mjs';
+} from '../skills/prospector/scripts/lib/plan.mjs';
 import {
   evaluationInput,
   evaluationQuestions,
   evaluatorRequest,
   exaRequest,
   normalizeAssessment,
-} from '../skills/rainmaker/scripts/lib/providers.mjs';
+} from '../skills/prospector/scripts/lib/providers.mjs';
 import {
   renderReport,
   reportData,
   validateNotes,
-} from '../skills/rainmaker/scripts/lib/report.mjs';
+} from '../skills/prospector/scripts/lib/report.mjs';
 
 const exec = promisify(execFile);
-const temp = () => mkdtemp(join(tmpdir(), 'rainmaker-test-'));
+const temp = () => mkdtemp(join(tmpdir(), 'prospector-test-'));
 const sample = () => {
   const plan = structuredClone(demoRun().plan);
   plan.collections = [plan.collections[0]];
@@ -418,7 +418,7 @@ test('reports escape source HTML and substitution tokens, whitelist fields and n
   assert.ok(!html.includes('NEVER_INCLUDE_THIS'));
   assert.ok(!html.includes('ALSO_PRIVATE'));
   assert.ok(!html.includes('</script><script>globalThis.stolen'));
-  const json = html.match(/id="rainmaker-data">([\s\S]*?)<\/script>/)[1];
+  const json = html.match(/id="prospector-data">([\s\S]*?)<\/script>/)[1];
   assert.equal(JSON.parse(json).brief, run.plan.brief);
   assert.equal(reportData(run).collections.length, 3);
 });
@@ -454,7 +454,7 @@ test('presentation export matches the saved report and excludes request receipts
   run.ledger = [{ response: { privateReceipt: 'OMIT_RECEIPTS' } }];
   await saveJson(join(directory, 'run.json'), run);
   await exec(process.execPath, [
-    new URL('../skills/rainmaker/scripts/rainmaker.mjs', import.meta.url)
+    new URL('../skills/prospector/scripts/prospector.mjs', import.meta.url)
       .pathname,
     'report',
     '--run',
@@ -465,7 +465,7 @@ test('presentation export matches the saved report and excludes request receipts
   const exported = await readJson(join(directory, 'data.json'));
   const html = await readFile(join(directory, 'report.html'), 'utf8');
   const embedded = JSON.parse(
-    html.match(/id="rainmaker-data">([\s\S]*?)<\/script>/)[1],
+    html.match(/id="prospector-data">([\s\S]*?)<\/script>/)[1],
   );
   assert.deepEqual(exported, embedded);
   assert.equal(
@@ -477,11 +477,11 @@ test('presentation export matches the saved report and excludes request receipts
 test('a copied skill folder generates its report with Node and no npm install', async () => {
   const directory = await temp();
   const installed = join(directory, 'installed-skill');
-  await cp(new URL('../skills/rainmaker/', import.meta.url), installed, {
+  await cp(new URL('../skills/prospector/', import.meta.url), installed, {
     recursive: true,
   });
   const { stdout } = await exec(process.execPath, [
-    join(installed, 'scripts/rainmaker.mjs'),
+    join(installed, 'scripts/prospector.mjs'),
     'demo',
     '--out',
     join(directory, 'report'),
@@ -489,19 +489,19 @@ test('a copied skill folder generates its report with Node and no npm install', 
   assert.match(stdout, /no API calls/);
   assert.ok(
     (await readFile(join(directory, 'report/report.html'), 'utf8')).includes(
-      'rainmaker-root',
+      'prospector-root',
     ),
   );
 });
 test('non-interactive setup stores only chosen credentials and doctor never prints them', async () => {
   const directory = await temp();
   const script = new URL(
-    '../skills/rainmaker/scripts/rainmaker.mjs',
+    '../skills/prospector/scripts/prospector.mjs',
     import.meta.url,
   ).pathname;
   const env = {
     ...process.env,
-    RAINMAKER_CONFIG_DIR: directory,
+    PROSPECTOR_CONFIG_DIR: directory,
     EXA_API_KEY: 'setup-search-fixture',
     OPENAI_API_KEY: 'setup-openai-fixture',
     CLOUDFLARE_API_TOKEN: 'unselected-fixture',

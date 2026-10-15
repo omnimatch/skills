@@ -1,5 +1,5 @@
 ---
-name: Rainmaker
+name: Prospector
 description: Evidence-led research on a dark navy canvas with a lilac comparison radar.
 colors:
   background: "#0d1020"
@@ -87,11 +87,11 @@ components:
     padding: "9px 26px 9px 12px"
 ---
 
-# Design System: Rainmaker
+# Design System: Prospector
 
 ## Overview
 
-The research radar is Rainmaker's organizing visual: a quiet navy canvas, a lilac comparison plot and a browsable collection whose evidence remains close at hand. This preserves the Omnimatch direction recorded in [PRODUCT.md](PRODUCT.md).
+The research radar is Prospector's organizing visual: a quiet navy canvas, a lilac comparison plot and a browsable collection whose evidence remains close at hand. This preserves the Omnimatch direction recorded in [PRODUCT.md](PRODUCT.md).
 
 The interface is compact enough for sustained investigation. Hierarchy comes from typography, spacing and selection; concise headings and concrete controls carry the workflow. Unknown evidence remains visible in the chart and assessment rather than becoming decorative completeness.
 

@@ -15,8 +15,8 @@ export const digest = (value) =>
   createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const configDirectory = () =>
   resolve(
-    process.env.RAINMAKER_CONFIG_DIR ||
-      join(homedir(), '.config', 'omnimatch', 'rainmaker'),
+    process.env.PROSPECTOR_CONFIG_DIR ||
+      join(homedir(), '.config', 'omnimatch', 'prospector'),
   );
 export async function readJson(path, fallback) {
   try {

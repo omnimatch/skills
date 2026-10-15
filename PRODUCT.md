@@ -12,7 +12,7 @@ People using their own coding or file-capable agents to research potential custo
 
 ## Product Purpose
 
-Rainmaker is the first free Omnimatch skill, demonstrating Omnimatch's research method as part of its consultancy offering. It works without an Omnimatch account and uses the person's own provider keys.
+Prospector is the first free Omnimatch skill, demonstrating Omnimatch's research method as part of its consultancy offering. It works without an Omnimatch account and uses the person's own provider keys.
 
 ## Operating Context
 

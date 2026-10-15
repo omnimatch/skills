@@ -13,17 +13,17 @@ Requirements: Node 22+, an agent with file and command execution, Exa for search
 The private terminal wizard:
 
 ```sh
-node /absolute/path/to/rainmaker/scripts/rainmaker.mjs setup
+node /absolute/path/to/prospector/scripts/prospector.mjs setup
 ```
 
 It asks for evaluator, budget and missing keys. Key input is hidden. It makes no network requests. If a host cannot provide a user-visible terminal, ask the user to run this command themselves; do not solicit secrets through chat. Environment-driven setup is available after the user has securely provided their keys:
 
 ```sh
-node /absolute/path/to/rainmaker/scripts/rainmaker.mjs setup --non-interactive --provider clef --budget-usd 2
-node /absolute/path/to/rainmaker/scripts/rainmaker.mjs doctor
+node /absolute/path/to/prospector/scripts/prospector.mjs setup --non-interactive --provider clef --budget-usd 2
+node /absolute/path/to/prospector/scripts/prospector.mjs doctor
 ```
 
-`doctor` prints presence and readiness only. It does not verify remote account entitlement. Keys are saved as plaintext in `~/.config/omnimatch/rainmaker/credentials.json`, with mode 0600 and a 0700 containing directory on POSIX systems. Environment variables override saved values. `RAINMAKER_CONFIG_DIR` selects another private configuration directory. On Windows, use the account's private directory or a secret manager with appropriate ACLs; POSIX mode bits alone are not an access-control guarantee there.
+`doctor` prints presence and readiness only. It does not verify remote account entitlement. Keys are saved as plaintext in `~/.config/omnimatch/prospector/credentials.json`, with mode 0600 and a 0700 containing directory on POSIX systems. Environment variables override saved values. `PROSPECTOR_CONFIG_DIR` selects another private configuration directory. On Windows, use the account's private directory or a secret manager with appropriate ACLs; POSIX mode bits alone are not an access-control guarantee there.
 
 ## Spending and recovery
 

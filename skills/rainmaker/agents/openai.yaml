@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rainmaker"
-  short_description: "Find prospects and explore the evidence"
-  default_prompt: "Use $rainmaker to set up my research providers, find suitable prospects and create an interactive radar report."

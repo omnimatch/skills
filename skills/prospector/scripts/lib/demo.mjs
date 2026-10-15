@@ -63,7 +63,7 @@ export function demoRun() {
     version: 1,
     title: 'Where your next customers could be',
     brief:
-      'A demonstration of Rainmaker researching UK manufacturers for an operations consultancy. All organisations, people and events in this report are fictional.',
+      'A demonstration of Prospector researching UK manufacturers for an operations consultancy. All organisations, people and events in this report are fictional.',
     offer: 'Operations improvement for growing manufacturers',
     territory: 'United Kingdom',
     exclusions: [],

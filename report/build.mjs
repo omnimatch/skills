@@ -20,15 +20,15 @@ const font = await readFile(new URL('src/SpaceGrotesk.ttf', import.meta.url));
 const fontCss = `@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(data:font/ttf;base64,${font.toString('base64')}) format('truetype')}`;
 const notices = (
   await readFile(
-    new URL('skills/rainmaker/assets/THIRD_PARTY_LICENSES.txt', root),
+    new URL('skills/prospector/assets/THIRD_PARTY_LICENSES.txt', root),
     'utf8',
   )
 ).replace(/--/g, '—');
 const html = `<!doctype html>
 <!-- Third-party licences\n${notices}\n-->
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'"><title>Rainmaker research</title><style>${fontCss}${css}</style></head><body><div id="rainmaker-root"></div><noscript>This interactive report needs JavaScript. Saved evidence is also available in the accompanying run.json file.</noscript><script type="application/json" id="rainmaker-data">"__RAINMAKER_DATA__"</script><script>${script}</script></body></html>`;
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'"><title>Prospector research</title><style>${fontCss}${css}</style></head><body><div id="prospector-root"></div><noscript>This interactive report needs JavaScript. Saved evidence is also available in the accompanying run.json file.</noscript><script type="application/json" id="prospector-data">"__PROSPECTOR_DATA__"</script><script>${script}</script></body></html>`;
 await writeFile(
-  new URL('skills/rainmaker/assets/report-template.html', root),
+  new URL('skills/prospector/assets/report-template.html', root),
   html,
 );
 console.log(

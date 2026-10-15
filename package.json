@@ -1,6 +1,6 @@
 {
   "name": "omnimatch-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Free agent recipes from Omnimatch. Your machine, your API keys, your research.",
@@ -11,7 +11,7 @@
     "build:report": "node report/build.mjs",
     "lint": "biome check .",
     "test": "node --test tests/*.test.mjs",
-    "demo": "node skills/rainmaker/scripts/rainmaker.mjs demo --out /tmp/rainmaker-demo"
+    "demo": "node skills/prospector/scripts/prospector.mjs demo --out /tmp/prospector-demo"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",

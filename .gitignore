@@ -4,7 +4,7 @@ node_modules/
 .env.*
 !.env.example
 credentials*
-rainmaker-runs/
+prospector-runs/
 demo-output/
 *.log
 *.tgz

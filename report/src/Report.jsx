@@ -241,7 +241,7 @@ function exportCsv(collection, items) {
   );
   const a = document.createElement('a');
   a.href = url;
-  a.download = `rainmaker-${collection.id}.csv`;
+  a.download = `prospector-${collection.id}.csv`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
@@ -299,7 +299,7 @@ function Report({ data }) {
     setPageSize(50);
   }, [lane, query, filter, sort]);
   useEffect(() => {
-    document.title = `${data.title} · Rainmaker`;
+    document.title = `${data.title} · Prospector`;
   }, [data.title]);
   useEffect(() => {
     if (!destination || destination !== active?.id) return;
@@ -335,7 +335,7 @@ function Report({ data }) {
             <span />
           </span>
           <span>
-            Rainmaker<span className="byline">by Omnimatch</span>
+            Prospector<span className="byline">by Omnimatch</span>
           </span>
         </a>
         <div className="report-actions">
@@ -774,7 +774,7 @@ function Report({ data }) {
       </details>
       <footer>
         <a href="https://omnimatch.ai" target="_blank" rel="noreferrer">
-          Made with Rainmaker by Omnimatch <Icon name="external" />
+          Made with Prospector by Omnimatch <Icon name="external" />
         </a>
         <span>
           Your research stays in this file. No analytics or network requests.
@@ -785,14 +785,14 @@ function Report({ data }) {
 }
 try {
   const data = JSON.parse(
-    document.getElementById('rainmaker-data').textContent,
+    document.getElementById('prospector-data').textContent,
   );
   if (data?.version !== 1 || !Array.isArray(data.collections))
     throw new Error('No valid research data was supplied.');
-  createRoot(document.getElementById('rainmaker-root')).render(
+  createRoot(document.getElementById('prospector-root')).render(
     <Report data={data} />,
   );
 } catch {
-  document.getElementById('rainmaker-root').textContent =
-    'This report could not be opened. Regenerate it from the saved run with Rainmaker’s report command.';
+  document.getElementById('prospector-root').textContent =
+    'This report could not be opened. Regenerate it from the saved run with Prospector’s report command.';
 }

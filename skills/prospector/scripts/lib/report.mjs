@@ -98,13 +98,13 @@ export async function renderReport(run, output, notes = {}) {
     new URL('../../assets/report-template.html', import.meta.url),
     'utf8',
   );
-  if (!template.includes('"__RAINMAKER_DATA__"'))
+  if (!template.includes('"__PROSPECTOR_DATA__"'))
     throw new Error(
-      'Report template is missing. Reinstall Rainmaker from the repository.',
+      'Report template is missing. Reinstall Prospector from the repository.',
     );
   await atomicWrite(
     output,
-    template.replace('"__RAINMAKER_DATA__"', () =>
+    template.replace('"__PROSPECTOR_DATA__"', () =>
       safeScriptJson(reportData(run, notes)),
     ),
   );

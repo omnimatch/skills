@@ -1,20 +1,20 @@
 ---
-name: rainmaker
+name: prospector
 description: Find and prioritise target companies, relevant buyers and credible routes to approach using the user's own API keys. Guides first-time setup, saves an evidence-ranked research collection and produces an interactive radar report. Use for prospect research and market opportunity reports, not automated outreach.
 license: MIT
 ---
 
-# Rainmaker
+# Prospector
 
 Help the user's business find suitable customers and a supported next step. This skill runs locally with their own search and evaluation accounts. It has no Omnimatch account, MCP server or hosted-service dependency.
 
-Resolve `scripts/rainmaker.mjs` relative to this SKILL.md, not the user's working directory. Commands below use `RAINMAKER` as that absolute script path. Use Node 22 or later. Installing this folder does not install npm dependencies; the runner is dependency-free and the React report is already bundled.
+Resolve `scripts/prospector.mjs` relative to this SKILL.md, not the user's working directory. Commands below use `PROSPECTOR` as that absolute script path. Use Node 22 or later. Installing this folder does not install npm dependencies; the runner is dependency-free and the React report is already bundled.
 
 ## First use
 
-1. Run `node "$RAINMAKER" doctor`. It checks local configuration without displaying keys or making network calls.
+1. Run `node "$PROSPECTOR" doctor`. It checks local configuration without displaying keys or making network calls.
 2. If setup is incomplete, read [setup](references/setup.md). Guide the user through one setup conversation: Exa search, their choice of OpenAI Decisions or Cloudflare Clef, and their per-run budget. Use available configuration before asking for missing facts. Keys go into a private terminal or the user's secret manager, never chat, tool arguments, a research plan or a report. Never collect the assistant host's login tokens. An existing ChatGPT subscription does not establish Decisions API access.
-3. Use `node "$RAINMAKER" setup` in a user-visible private terminal, or non-interactive setup from credentials the user has explicitly provided through environment variables. Do not run an unattended interactive prompt and claim setup is complete. `doctor` must report ready. Setup validates local values; provider authentication is exercised only on the first authorised research request. Do not use anyone else's keys or a key from an unrelated project.
+3. Use `node "$PROSPECTOR" setup` in a user-visible private terminal, or non-interactive setup from credentials the user has explicitly provided through environment variables. Do not run an unattended interactive prompt and claim setup is complete. `doctor` must report ready. Setup validates local values; provider authentication is exercised only on the first authorised research request. Do not use anyone else's keys or a key from an unrelated project.
 4. Offer the offline `demo` command if the user wants to see the report before connecting providers. It makes no API calls and labels its data fictional.
 
 ## Research
@@ -25,12 +25,12 @@ The host assistant creates the brief, rubric and search plan; the script execute
 
 Create a plan JSON in the user's chosen research directory. Use three to eight meaningful ordered score criteria per collection, explicit weights and required only for a stated must-have. Missing evidence is unknown, not the worst score. Plan source coverage around the brief rather than stopping after an arbitrary shortlist. A displayed top-three selection is not a collection cap. Use only supported Exa options; the example and workflow describe the schema.
 
-Run `node "$RAINMAKER" inspect --plan /absolute/plan.json`. Tell the user the plan, providers and request estimates before first paid execution. Honour a budget they have already authorised; otherwise obtain the missing budget decision. Local request ceilings are conservative estimates, not a provider-enforced billing guarantee. Provider account spending limits remain authoritative. Do not change provider or increase a budget without the user's instruction.
+Run `node "$PROSPECTOR" inspect --plan /absolute/plan.json`. Tell the user the plan, providers and request estimates before first paid execution. Honour a budget they have already authorised; otherwise obtain the missing budget decision. Local request ceilings are conservative estimates, not a provider-enforced billing guarantee. Provider account spending limits remain authoritative. Do not change provider or increase a budget without the user's instruction.
 
 Execute:
 
 ```sh
-node "$RAINMAKER" run --plan /absolute/plan.json --out /absolute/rainmaker-runs/client
+node "$PROSPECTOR" run --plan /absolute/plan.json --out /absolute/prospector-runs/client
 ```
 
 Keep working until the process returns completed, partial or paused. Use real saved progress in status updates. Never claim research started before the runner dispatches it, or completion from an acknowledgement. `run.json` retains completed searches, assessments, source text, errors and the request ledger. Preserve its plan and directory for follow-ups. Rerunning the same command resumes completed checkpoints without recollecting them. A changed plan or provider requires a new directory.

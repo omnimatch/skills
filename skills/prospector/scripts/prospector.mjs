@@ -18,7 +18,7 @@ import { validatePlan } from './lib/plan.mjs';
 import { providerTarget } from './lib/providers.mjs';
 import { renderReport, reportData, validateNotes } from './lib/report.mjs';
 
-const HELP = `Rainmaker by Omnimatch · Node 22+ · no Omnimatch account
+const HELP = `Prospector by Omnimatch · Node 22+ · no Omnimatch account
 
   setup                         Guided provider and private API-key setup
   setup --non-interactive --provider clef|openai --budget-usd 2
@@ -26,7 +26,7 @@ const HELP = `Rainmaker by Omnimatch · Node 22+ · no Omnimatch account
   doctor                        Check local setup without calling any API
   example --out plan.json        Write a complete example research plan
   inspect --plan plan.json       Validate a plan and estimate request ceilings
-  run --plan plan.json --out ./rainmaker-runs/brief [--budget-usd 2]
+  run --plan plan.json --out ./prospector-runs/brief [--budget-usd 2]
                                 Run or resume the same saved plan
   run ... --retry-failed         Explicitly retry failed requests
   run ... --retry-uncertain      Accept possible duplicate charges on uncertain requests
@@ -96,7 +96,7 @@ export async function setup(
     };
     try {
       io.output.write(
-        'Rainmaker uses your provider accounts. Setup makes no paid requests.\nSearch: https://dashboard.exa.ai/api-keys\nEvaluation: Cloudflare Clef Flash or OpenAI Decisions\n',
+        'Prospector uses your provider accounts. Setup makes no paid requests.\nSearch: https://dashboard.exa.ai/api-keys\nEvaluation: Cloudflare Clef Flash or OpenAI Decisions\n',
       );
       config.provider = String(
         await ask('Evaluator (clef/openai)', config.provider || 'clef'),
@@ -172,7 +172,7 @@ export async function main(args = process.argv.slice(2)) {
     return;
   }
   if (Number(process.versions.node.split('.')[0]) < 22)
-    throw new Error('Rainmaker requires Node 22 or later.');
+    throw new Error('Prospector requires Node 22 or later.');
   if (command === 'setup') {
     await setup(options);
     return;
@@ -215,7 +215,7 @@ export async function main(args = process.argv.slice(2)) {
         'utf8',
       ),
     );
-    const output = resolve(options.out || 'rainmaker-plan.json');
+    const output = resolve(options.out || 'prospector-plan.json');
     await saveJson(output, plan);
     console.log(output);
     return;
@@ -358,6 +358,6 @@ if (
   import.meta.url === pathToFileURL(realpathSync(resolve(process.argv[1]))).href
 )
   main().catch((error) => {
-    console.error(`Rainmaker: ${error.message}`);
+    console.error(`Prospector: ${error.message}`);
     process.exitCode = 1;
   });
