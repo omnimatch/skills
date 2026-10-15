@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "title": "UK manufacturing prospects for an operations consultancy",
+  "brief": "Find UK manufacturers that could benefit from operations improvement, relevant public professional profiles and event sources for meeting this audience. Assess evidenced fit; do not infer buying intent or named attendance.",
+  "offer": "Operations improvement consultancy for growing manufacturers",
+  "territory": "United Kingdom",
+  "exclusions": [],
+  "collections": [
+    {
+      "id": "accounts",
+      "kind": "companies",
+      "title": "Companies",
+      "unit": "company pages",
+      "criteria": [
+        {
+          "id": "offer",
+          "label": "Offer fit",
+          "question": "Does the primary company manufacture physical products and have operations relevant to the consultancy offer?",
+          "weight": 3,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "scale",
+          "label": "Relevant scale",
+          "question": "Does the published evidence indicate an established production operation suitable for a consultancy engagement?",
+          "weight": 1,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "territory",
+          "label": "Territory",
+          "question": "Is there direct evidence of a UK production operation?",
+          "weight": 2,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "signal",
+          "label": "Current signals",
+          "question": "Is there dated evidence of a relevant operational change, expansion or improvement programme? Missing signals are unknown, not ineligible.",
+          "weight": 1,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK precision engineering manufacturers expanding production operations",
+          "numResults": 25
+        },
+        {
+          "query": "UK food packaging manufacturers operations improvement expansion",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "buyers",
+      "kind": "people",
+      "title": "People",
+      "unit": "public professional profiles",
+      "criteria": [
+        {
+          "id": "role",
+          "label": "Role fit",
+          "question": "Does the stated current role involve manufacturing operations or production improvement? A title does not prove purchasing authority.",
+          "weight": 3,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "employer",
+          "label": "Employer fit",
+          "question": "Does the stated current employer match the UK manufacturing scope?",
+          "weight": 2,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "relevance",
+          "label": "Relevant experience",
+          "question": "Does the profile state experience relevant to production efficiency and delivery improvement?",
+          "weight": 1,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        }
+      ],
+      "searches": [
+        {
+          "query": "operations directors UK precision engineering manufacturing",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "kind": "events",
+      "title": "Event sources",
+      "unit": "event listing pages",
+      "criteria": [
+        {
+          "id": "audience",
+          "label": "Audience fit",
+          "question": "Does the primary listing describe an audience of UK manufacturing operations leaders?",
+          "weight": 3,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "place",
+          "label": "Location",
+          "question": "Does the evidence place the meeting in the United Kingdom?",
+          "weight": 1,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        },
+        {
+          "id": "access",
+          "label": "Meeting access",
+          "question": "Is there direct evidence of a format that supports professional conversation or networking? Do not infer named attendance.",
+          "weight": 1,
+          "levels": [
+            "Clearly unsuitable",
+            "Limited fit",
+            "Some fit",
+            "Good fit",
+            "Strong direct fit"
+          ]
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK manufacturing operations leaders networking events organiser dates",
+          "numResults": 25
+        }
+      ]
+    }
+  ]
+}

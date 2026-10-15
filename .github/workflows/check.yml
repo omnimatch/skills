@@ -1,0 +1,18 @@
+name: Check skills
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  rainmaker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build:report
+      - run: npm run lint
+      - run: git diff --exit-code -- skills/rainmaker/assets/report-template.html
+      - run: npm test

@@ -1,0 +1,22 @@
+{
+  "name": "omnimatch-skills",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Free agent recipes from Omnimatch. Your machine, your API keys, your research.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:report": "node report/build.mjs",
+    "lint": "biome check .",
+    "test": "node --test tests/*.test.mjs",
+    "demo": "node skills/rainmaker/scripts/rainmaker.mjs demo --out /tmp/rainmaker-demo"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "esbuild": "0.28.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

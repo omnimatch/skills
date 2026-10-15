@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T17:07:26.665Z",
+  "title": "Design System: Rainmaker",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Deep navy background",
+        "tonalRamp": [
+          "#161b36",
+          "#252d5b",
+          "#343f7f",
+          "#4252a3",
+          "#5c6bbd",
+          "#8b96d0",
+          "#bec4e4",
+          "#edeff8"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Navy surface",
+        "tonalRamp": [
+          "#191e33",
+          "#2a3256",
+          "#3b4678",
+          "#4b5a9a",
+          "#6573b4",
+          "#919cc9",
+          "#c1c7e1",
+          "#eeeff7"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised navy",
+        "tonalRamp": [
+          "#1a1e33",
+          "#2b3255",
+          "#3c4776",
+          "#4d5b98",
+          "#6774b2",
+          "#939cc8",
+          "#c2c7e0",
+          "#eef0f6"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Warm foreground",
+        "tonalRamp": [
+          "#302b1c",
+          "#51482f",
+          "#716541",
+          "#918254",
+          "#ab9c6e",
+          "#c3b898",
+          "#ddd7c5",
+          "#f6f4ef"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted lavender",
+        "tonalRamp": [
+          "#22212c",
+          "#383649",
+          "#4e4c67",
+          "#656284",
+          "#7e7b9d",
+          "#a4a1ba",
+          "#cccad8",
+          "#f1f0f4"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Lilac accent",
+        "tonalRamp": [
+          "#13004d",
+          "#200080",
+          "#2d00b3",
+          "#3900e6",
+          "#531aff",
+          "#855cff",
+          "#baa3ff",
+          "#ece5ff"
+        ]
+      },
+      "accent-soft": {
+        "role": "primary",
+        "displayName": "Lilac wash",
+        "tonalRamp": [
+          "#201b32",
+          "#362d53",
+          "#4b3f74",
+          "#615095",
+          "#7b6aaf",
+          "#a195c6",
+          "#cac3df",
+          "#f0eef6"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Navy border",
+        "tonalRamp": [
+          "#1e212f",
+          "#31364e",
+          "#454c6d",
+          "#59628d",
+          "#727ca6",
+          "#9ba2c0",
+          "#c7cadb",
+          "#eff0f5"
+        ]
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Radar grid",
+        "tonalRamp": [
+          "#1e212f",
+          "#31374e",
+          "#454d6d",
+          "#59638c",
+          "#737da6",
+          "#9ba2c0",
+          "#c7cbdb",
+          "#eff1f5"
+        ]
+      },
+      "success": {
+        "displayName": "Completion green",
+        "tonalRamp": [
+          "#0f3e28",
+          "#196743",
+          "#22905e",
+          "#2cb979",
+          "#46d393",
+          "#7be0b2",
+          "#b5edd4",
+          "#eafaf3"
+        ]
+      },
+      "warning": {
+        "displayName": "Evidence amber",
+        "tonalRamp": [
+          "#472d06",
+          "#764c0a",
+          "#a56a0e",
+          "#d48812",
+          "#eda12b",
+          "#f2bc68",
+          "#f8daaa",
+          "#fdf5e7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Report display",
+        "purpose": "Balanced report title, limited to 24 characters per line."
+      },
+      "title": {
+        "displayName": "Section title",
+        "purpose": "Comparison, results and research headings."
+      },
+      "detail-title": {
+        "displayName": "Selected result title",
+        "purpose": "Selected assessment and navigation destination."
+      },
+      "body": {
+        "displayName": "Reading and controls",
+        "purpose": "Ordinary report text and interactive controls."
+      },
+      "evidence": {
+        "displayName": "Saved source text",
+        "purpose": "Long excerpts with preserved whitespace."
+      },
+      "label": {
+        "displayName": "Supporting label",
+        "purpose": "Dates, metadata and source annotations."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "radar-arrival",
+        "value": "opacity 0.35 to 1; blur(2px) to blur(0); 450ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Selected trace arrival; disabled with reduced motion."
+      },
+      {
+        "name": "row-hover",
+        "value": "background 150ms ease",
+        "purpose": "Tonal feedback; disabled with reduced motion."
+      },
+      {
+        "name": "assessment-navigation",
+        "value": "smooth; instant when prefers-reduced-motion: reduce",
+        "purpose": "Bring a selected assessment into view on mobile and from approach references."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-results",
+        "value": "1400px"
+      },
+      {
+        "name": "compact",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ghost action",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Routine actions use a transparent control with tonal hover.",
+      "html": "<div class=\"ds-action-demo\"><button class=\"ds-action\" type=\"button\">Print</button></div>",
+      "css": ".ds-action-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-action{font:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:8px 12px;background:transparent;color:inherit;border:0;border-radius:7px;cursor:pointer}.ds-action:hover{background:var(--raised,#1d2239)}.ds-action:focus-visible{outline:2px solid var(--accent,#c3afff);outline-offset:4px}"
+    },
+    {
+      "name": "Research search",
+      "kind": "input",
+      "description": "A transparent search field with a leading icon and accessible label.",
+      "html": "<div class=\"ds-search-demo\"><label class=\"ds-search\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 4 4\"/></svg><input type=\"search\" aria-label=\"Search research\" placeholder=\"Search companies and evidence\"/></label></div>",
+      "css": ".ds-search-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-search{display:flex;align-items:center;gap:10px;color:var(--muted,#b0aec3);min-width:180px}.ds-search svg{flex-shrink:0}.ds-search input{font:inherit;width:100%;min-height:42px;padding:6px 0;border:0;background:transparent;color:var(--foreground,#f4f2ec);caret-color:var(--accent,#c3afff)}.ds-search input::placeholder{color:var(--muted,#b0aec3)}.ds-search input:focus-visible{outline:2px solid var(--accent,#c3afff);outline-offset:3px}"
+    },
+    {
+      "name": "Collection navigation",
+      "kind": "nav",
+      "refersTo": "collection-tab",
+      "description": "Collection labels scroll horizontally and mark the active selection with a lilac underline.",
+      "html": "<div class=\"ds-nav-demo\"><nav class=\"ds-nav\" aria-label=\"Research collections\"><button type=\"button\" aria-pressed=\"true\">Companies <span>17</span></button><button type=\"button\" aria-pressed=\"false\">People <span>6</span></button><button type=\"button\" aria-pressed=\"false\">Events <span>4</span></button></nav></div>",
+      "css": ".ds-nav-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-nav{display:flex;gap:26px;border-bottom:1px solid var(--border,#30354c);overflow-x:auto;padding-top:7px}.ds-nav button{position:relative;display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:12px 0 15px;font:inherit;white-space:nowrap;background:transparent;border:0;border-radius:0;color:var(--muted,#b0aec3);cursor:pointer}.ds-nav button:hover,.ds-nav button[aria-pressed=\"true\"]{color:var(--foreground,#f4f2ec)}.ds-nav button[aria-pressed=\"true\"]:after{content:\"\";position:absolute;height:2px;background:var(--accent,#c3afff);bottom:0;left:0;right:0}.ds-nav button span{color:var(--muted,#b0aec3);font-size:12px}.ds-nav button:focus-visible{outline:2px solid var(--accent,#c3afff);outline-offset:4px}"
+    },
+    {
+      "name": "Results container",
+      "kind": "card",
+      "refersTo": "results-container",
+      "description": "A single bordered surface groups the heading, bounded results and footnote.",
+      "html": "<div class=\"ds-card-demo\"><section class=\"ds-card\"><header class=\"ds-card-heading\"><h2>Companies</h2><span>17 companies</span></header><div class=\"ds-card-content\">Saved research results</div><p class=\"ds-card-footnote\">Ordered by fit × evidence coverage.</p></section></div>",
+      "css": ".ds-card-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-card{border:1px solid var(--border,#30354c);border-radius:13px;overflow:hidden;background:var(--surface,#15192b)}.ds-card-heading{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;padding:21px 22px 17px;border-bottom:1px solid var(--border,#30354c)}.ds-card-heading h2{margin:0;font-size:17px;font-weight:550;line-height:1.35;letter-spacing:-.02em}.ds-card-heading span{font-size:12px;color:var(--muted,#b0aec3)}.ds-card-content{padding:22px;color:var(--muted,#b0aec3);max-height:650px;overflow:auto}.ds-card-footnote{margin:0;font-size:11px;color:var(--muted,#b0aec3);line-height:1.6;border-top:1px solid var(--border,#30354c);padding:14px 22px}"
+    },
+    {
+      "name": "Selected result row",
+      "kind": "custom",
+      "refersTo": "result-row-active",
+      "description": "An ample selection target shows identity, coverage and fit.",
+      "html": "<div class=\"ds-row-demo\"><button type=\"button\" class=\"ds-row\" aria-pressed=\"true\"><span class=\"ds-row-index\">01</span><span class=\"ds-row-copy\"><strong>Example company</strong><span>company.example</span><small>Full rubric coverage</small></span><span class=\"ds-row-score\">88<small>fit</small></span><svg width=\"14\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14m-6-6 6 6-6 6\"/></svg></button></div>",
+      "css": ".ds-row-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-row{font:inherit;display:flex;align-items:center;text-align:left;width:100%;min-height:104px;padding:17px 12px;gap:13px;border:0;border-bottom:1px solid var(--border,#30354c);border-radius:0;color:inherit;background:var(--surface,#15192b);cursor:pointer;transition:background .15s}.ds-row:hover{background:var(--raised,#1d2239)}.ds-row[aria-pressed=\"true\"]{background:var(--accent-soft,#29223f)}.ds-row:focus-visible{outline:2px solid var(--accent,#c3afff);outline-offset:4px}.ds-row-index{font-size:11px;color:var(--muted,#b0aec3);align-self:flex-start;padding-top:3px;font-variant-numeric:tabular-nums}.ds-row-copy{display:flex;flex-direction:column;min-width:0;flex:1}.ds-row-copy strong{font-size:14px;line-height:1.4;font-weight:550;overflow-wrap:anywhere}.ds-row-copy>span{color:var(--muted,#b0aec3);font-size:11px;margin-top:4px}.ds-row-copy small{color:var(--muted,#b0aec3);font-size:10px;margin-top:5px}.ds-row-score{font-size:25px;font-weight:450;line-height:1.15;letter-spacing:-.025em;text-align:right;min-width:33px;font-variant-numeric:tabular-nums}.ds-row-score small{display:block;color:var(--muted,#b0aec3);font-size:10px;letter-spacing:0;margin-top:3px}.ds-row>svg{color:var(--accent,#c3afff);flex-shrink:0}@media(prefers-reduced-motion:reduce){.ds-row{transition:none}}"
+    },
+    {
+      "name": "Comparison radar",
+      "kind": "custom",
+      "description": "Quarter-step grid rings support the lilac selected trace; the live report leaves gaps for unknown scores.",
+      "html": "<div class=\"ds-radar-demo\"><svg class=\"ds-radar\" viewBox=\"0 0 440 355\" role=\"img\" aria-label=\"Example fit by criterion; exact values appear in the assessment\"><defs><linearGradient id=\"ds-radar-fill\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"var(--accent,#c3afff)\" stop-opacity=\".30\"/><stop offset=\"1\" stop-color=\"var(--accent,#c3afff)\" stop-opacity=\".03\"/></linearGradient></defs><g fill=\"none\" stroke=\"var(--grid,#343a52)\"><polygon points=\"220,150 245.7,168.7 235.9,198.8 204.1,198.8 194.3,168.7\"/><polygon points=\"220,123 271.4,160.3 251.7,220.7 188.3,220.7 168.6,160.3\"/><polygon points=\"220,96 297,152 267.6,242.5 172.4,242.5 143,152\"/><polygon points=\"220,69 322.7,143.6 283.5,264.4 156.5,264.4 117.3,143.6\"/><path d=\"M220 177V69m0 108 102.7-33.4M220 177l63.5 87.4M220 177l-63.5 87.4M220 177l-102.7-33.4\"/></g><polygon class=\"ds-radar-selection\" points=\"220,82 305,149 258,229 169,247 153,155\" fill=\"url(#ds-radar-fill)\" stroke=\"var(--accent,#c3afff)\" stroke-width=\"2.4\"/><g class=\"ds-radar-label\"><text x=\"220\" y=\"36\" text-anchor=\"middle\">Relevance</text><text x=\"355\" y=\"133\">Readiness</text><text x=\"304\" y=\"297\">Capacity</text><text x=\"136\" y=\"297\" text-anchor=\"end\">Access</text><text x=\"86\" y=\"133\" text-anchor=\"end\">Timing</text></g></svg><div class=\"ds-radar-legend\"><span><i></i>Selected result</span><span>Unknown scores have gaps</span></div></div>",
+      "css": ".ds-radar-demo{font-family:\"Space Grotesk\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif;font-size:14px;line-height:1.55;background:var(--background,#0d1020);color:var(--foreground,#f4f2ec);padding:20px;}.ds-radar{display:block;width:100%;max-width:560px;margin:8px auto -8px;overflow:visible}.ds-radar-label{fill:var(--muted,#b0aec3);font-size:16px;letter-spacing:-.01em}.ds-radar-selection{animation:ds-radar-arrival .45s cubic-bezier(.16,1,.3,1)}.ds-radar-legend{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:11px;color:var(--muted,#b0aec3);padding-bottom:27px}.ds-radar-legend span{display:flex;align-items:center;gap:6px}.ds-radar-legend i{display:inline-block;width:15px;height:2px;background:var(--accent,#c3afff)}@keyframes ds-radar-arrival{from{opacity:.35;filter:blur(2px)}to{opacity:1;filter:blur(0)}}@media(prefers-reduced-motion:reduce){.ds-radar-selection{animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The research radar",
+    "overview": "A quiet navy canvas, a lilac comparison plot and a browsable collection whose evidence remains close at hand. The interface is compact enough for sustained investigation. Hierarchy comes from typography, spacing and selection; concise headings and concrete controls carry the workflow. Unknown evidence remains visible in the chart and assessment.",
+    "keyCharacteristics": [
+      "Dark tonal surfaces with one lilac selection accent.",
+      "A readable radar paired with bounded, browsable results.",
+      "Plain labels, visible source evidence and tabular scores.",
+      "Keyboard access, reduced motion and a light print treatment."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Color Rule",
+        "body": "Use color to support an explicit label. Unknown scores are written as Unknown and leave gaps in the radar.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plain Heading Rule",
+        "body": "Lead with a concise title. Add supporting text when it explains evidence, scope or a recovery action.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do keep selected state, evidence coverage and unknown facts distinguishable in text as well as color.",
+      "Do preserve bounded scrolling and incremental result loading.",
+      "Do keep the offline report self-contained, including its font and interaction code.",
+      "Do provide a visible focus outline and honor reduced motion.",
+      "Do keep source evidence available beside its assessment."
+    ],
+    "donts": [
+      "Do not turn unknown values into zero scores or close their radar gaps.",
+      "Do not add shadows, excessive cards or decorative accents that weaken the tonal hierarchy.",
+      "Do not let result histories or evidence excerpts grow the page without bounds.",
+      "Do not add repetitive supporting copy beneath every heading.",
+      "Do not hide a capped radar population behind a claim that every result is plotted."
+    ]
+  }
+}
