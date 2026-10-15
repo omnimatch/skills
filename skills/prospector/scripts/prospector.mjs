@@ -224,7 +224,13 @@ export async function main(args = process.argv.slice(2)) {
     const directory = resolve(options.out || 'demo-output');
     const run = demoRun();
     await saveJson(join(directory, 'run.json'), run);
-    await renderReport(run, join(directory, 'report.html'));
+    if (run.demoNotes)
+      await saveJson(join(directory, 'notes.json'), run.demoNotes);
+    await renderReport(
+      run,
+      join(directory, 'report.html'),
+      run.demoNotes || {},
+    );
     console.log(
       `Fictional demo; no API calls.\n${join(directory, 'report.html')}`,
     );

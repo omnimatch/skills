@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
+import { variants } from '../catalogue/skills.mjs';
 
 const root = new URL('../', import.meta.url);
 const result = await build({
@@ -31,6 +32,15 @@ await writeFile(
   new URL('skills/prospector/assets/report-template.html', root),
   html,
 );
+for (const variant of variants) {
+  await writeFile(
+    new URL(`skills/${variant.slug}/assets/report-template.html`, root),
+    html
+      .replaceAll('PROSPECTOR', variant.env)
+      .replaceAll('Prospector', variant.name)
+      .replaceAll('prospector', variant.slug),
+  );
+}
 console.log(
   `Bundled offline report: ${(Buffer.byteLength(html) / 1024).toFixed(0)} KB`,
 );

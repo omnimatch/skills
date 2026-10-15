@@ -1,63 +1,62 @@
 # Omnimatch skills
 
-Free agent recipes from [Omnimatch](https://omnimatch.ai). Run them in your own agent, with your own API keys. No Omnimatch account, hosted app or MCP server is required.
+Free agent recipes from [Omnimatch](https://omnimatch.ai). Run them in your own file-capable agent, with your own API keys. No Omnimatch account, databases, hosted app or MCP server is required.
 
-## Prospector
+| Skill | What it does | Install |
+| --- | --- | --- |
+| [Prospector](skills/prospector/SKILL.md) | Find potential customers, relevant people and useful events | `npx skills add omnimatch/skills --skill prospector` |
+| [Job Scout](skills/job-scout/SKILL.md) | Find jobs, research routes into employers and track applications locally | `npx skills add omnimatch/skills --skill job-scout` |
+| [Recruiter](skills/recruiter/SKILL.md) | Compare public professional evidence against a hiring brief for human review | `npx skills add omnimatch/skills --skill recruiter` |
+| [Day Tripper](skills/day-tripper/SKILL.md) | Find ideas and build a dated day plan with an itinerary and sourced route sketch | `npx skills add omnimatch/skills --skill day-tripper` |
 
-Find and prioritise target companies, relevant people and credible routes to approach. Prospector plans the research, collects evidence, assesses each result against a rubric and creates an interactive radar report with searchable results and source evidence.
+Then ask your agent to use the installed skill, guide setup and research your request. The first conversation brings together provider setup, your brief and a run budget. Keys go into a private terminal or your secret manager, never chat.
 
-![Prospector's interactive radar and searchable research collection](docs/prospector-report.png)
+![The interactive research radar and searchable collection](docs/prospector-report.png)
 
-```sh
-npx skills add omnimatch/skills --skill prospector
-```
+## What you need
 
-Then ask your agent:
+Node 22+ (24 recommended), Exa search and your choice of OpenAI Decisions or Cloudflare Clef. The recipes are free; API use is billed by those providers. An existing assistant subscription does not automatically provide API entitlement.
 
-> Use Prospector. Help me set it up, then find companies that could buy my services and create an interactive research report.
+Each installed skill includes its own runner and prebuilt React report. Recipients do not run npm install or compile the interface. Codex and Claude Code can run the scripts where command execution and files are available. A ChatGPT session needs those capabilities; a chat-only session cannot execute a local skill.
 
-The first conversation guides provider setup and the research brief. You need Node 22+ (24 recommended), Exa search and your choice of OpenAI Decisions or Cloudflare Clef. API use is billed by those providers; the skill is free. Keys stay in your environment or private local configuration. The setup wizard hides key input and never asks for keys in chat.
+Prefer the host's supported interactive artifact or visualization surface. Preview support varies, so every run also produces a self-contained HTML file that opens in a browser without a server. It contains the radar, scrollable results, search, filters, criterion scores, saved evidence, CSV and print output. Day Tripper can add a timed itinerary and schematic route from sourced coordinates.
 
-The installed skill includes its runner and prebuilt React report. End users do not run npm install or compile the interface. File-capable agents such as Codex and Claude Code can run it; embedded previews depend on the host. The self-contained HTML report also opens in a browser without a server. ChatGPT sessions need command execution and files; chat-only environments cannot run a local skill.
+## Try a report without keys
 
-## Try it without API keys
-
-After cloning or downloading this repository:
+After cloning or downloading the repository:
 
 ```sh
 node skills/prospector/scripts/prospector.mjs demo --out ./demo-output
+node skills/job-scout/scripts/job-scout.mjs demo --out ./job-demo
+node skills/recruiter/scripts/recruiter.mjs demo --out ./recruiter-demo
+node skills/day-tripper/scripts/day-tripper.mjs demo --out ./trip-demo
 ```
 
-Open `demo-output/report.html`. Everything in the demonstration is fictional. No API requests are made. Select a result to change the radar, switch collections, search evidence, filter results and open the source passages.
+Open the chosen directory's `report.html`. All demonstration records are fictional; the Day Tripper coordinates are synthetic. These commands make no API requests.
 
-## What is included
+## Research that stays explorable
 
-- Guided first-use setup and private local credentials.
-- Separate company, people, news and event-source research.
-- Explicit scoring criteria, evidence sufficiency and preserved unknowns.
-- Canonical-URL deduplication, source text and search provenance.
-- Checkpoints, conservative request budgets and explicit paid retries.
-- An offline React report with radar comparison, scrollable results, search, filtering, evidence, CSV and print output.
-- A [Grok Bot companion template](templates/grok/README.md) using the same skill and report.
+Each skill guides a brief, plans separate source collections, saves evidence and assesses results against a consistent rubric. Missing facts stay unknown. Checkpoints preserve completed work, conservative request ceilings keep spending decisions visible, and failed or lost requests require explicit paid retries. Follow-up questions read saved evidence before starting fresh discovery.
 
-This initial release deduplicates exact canonical URLs, not every legal entity across different websites. Event hits are listing pages until occurrence details are verified. Provider scores are model assessments, not calibrated probabilities of a sale. The local cost ceiling reserves conservative request estimates; provider account spending limits remain the final billing boundary.
+The initial collector deduplicates exact canonical URLs. Different pages about one company, person, vacancy or venue can remain separate. Event hits are listing pages until occurrence details are verified. Scores describe fit to a brief and support human review; they are not calibrated outcome probabilities. Local request ceilings are estimates; provider account spending limits remain the final billing boundary.
+
+No skill automatically sends outreach, applies for jobs, makes hiring decisions, books a trip or schedules recurring work. The host assistant follows the user's current instructions and checks current primary sources for consequential practical details. Research queries and evidence go to the selected providers; checkpoints and reports stay local. There is no Omnimatch telemetry.
+
+## Grok Bot templates
+
+Use the [Grok Bot guide](templates/grok/README.md) for Prospector and the companion recipes for [Job Scout](templates/grok/job-scout/README.md), [Recruiter](templates/grok/recruiter/README.md) and [Day Tripper](templates/grok/day-tripper/README.md). Each template bootstraps public code on the recipient bot's own computer and uses that person's keys. Custom scripts and private computer state do not transfer with a native template. An openable browser report is preserved when embedded chat rendering is unavailable.
 
 ## Develop
 
-The scripts use Node built-ins and have no runtime dependencies. React and esbuild are development dependencies for rebuilding the already shipped report asset.
+The runtime uses Node built-ins. React, esbuild and Biome are development dependencies for the already shipped report. The Prospector runner is the common source; `scripts/sync-skills.mjs` copies its runtime and shared references into each separately installable folder. Domain instructions stay in the individual SKILL.md files, with plans and fictional demos in `catalogue/skills.mjs`. Edit the source, then regenerate rather than patching generated runtime copies.
 
 ```sh
 npm ci
 npm run build:report
+npm run lint
 npm test
 ```
 
-Tests use synthetic fixtures and mocked provider responses. They require no API keys. Do not commit credentials, real prospect research, user profiles or run directories. Keep installed skill dependencies inside `skills/prospector/` so an individual skill installation remains self-contained.
+CI checks that regeneration leaves all skill files unchanged. See [validation and compatibility](docs/VALIDATION.md) for checked paths and limits. Tests use synthetic fixtures and mocked responses, with no API keys. Keep credentials, CVs, hiring briefs, private profiles and real research outside the public checkout. Every installed skill must remain self-contained.
 
-See [validation and compatibility](docs/VALIDATION.md) for the checked paths and current limits. This is an independently published skill; no official platform endorsement is implied.
-
-See [Prospector's workflow](skills/prospector/references/workflow.md) and [setup guide](skills/prospector/references/setup.md) for operational details. Bug reports and contributions are welcome through GitHub issues and pull requests.
-
-## Licence
-
-Original code and instructions are MIT licensed. React's bundled runtime retains its MIT notices. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+These are independently published skills; no official platform endorsement is implied. Bug reports and contributions are welcome through GitHub issues and pull requests. Original code and instructions are MIT licensed. React and the embedded font retain their own notices; see [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

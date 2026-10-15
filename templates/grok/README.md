@@ -19,3 +19,13 @@ Grok's official guide states that templates package instructions, relevant skill
 The radar report is a self-contained HTML file. Prefer a working interactive preview when the installed Grok Bot supports one; otherwise attach or open it in a browser. Embedded chat rendering has not been verified in Grok.
 
 Reference checked 15 October 2026: [Templates for Grok Bot](https://x.ai/bot/guides/templates-for-grok-bot).
+
+## Published Prospector template
+
+[Install Prospector in Grok Bot](https://x.ai/bot/Sx3cWiGu8GvbbZCo96upu).
+
+The native template was published on 15 October 2026 after inspecting its generic instructions, three setup/role skills and generic memory. Its bot ran the offline demo on Node 22. The verified output is an openable interactive HTML report; native in-chat interactive rendering was not verified. The template bootstraps v0.2.0 and does not include credentials, client research, routines or plugins.
+
+## Companion skills
+
+Source recipes for [Job Scout](job-scout/README.md), [Recruiter](recruiter/README.md) and [Day Tripper](day-tripper/README.md) bootstrap their respective standalone folders from v0.3.0. Each bot has its own setup, role and report. Review a template's actual contents before publishing; the source files in this repository do not by themselves prove native publication.

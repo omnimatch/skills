@@ -8,3 +8,9 @@ prospector-runs/
 demo-output/
 *.log
 *.tgz
+*-runs/
+*-demo/
+**/run.json
+**/notes.json
+candidate-profile.json
+applications.json

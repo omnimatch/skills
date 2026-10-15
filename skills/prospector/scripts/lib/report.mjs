@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { atomicWrite } from './files.mjs';
-import { summarize } from './plan.mjs';
+import { canonicalUrl, summarize } from './plan.mjs';
 
 export function validateNotes(run, raw = {}) {
   const items = new Map(run.items.map((i) => [i.id, i]));
@@ -42,7 +42,58 @@ export function validateNotes(run, raw = {}) {
     throw new Error(
       'A recommended approach needs references to saved results.',
     );
-  return { collections, results, references, approach };
+  let itinerary = null;
+  if (raw.itinerary) {
+    const source = raw.itinerary;
+    if (
+      !Array.isArray(source.stops) ||
+      !source.stops.length ||
+      source.stops.length > 5
+    )
+      throw new Error('An itinerary needs one to five saved stops.');
+    const stops = source.stops.map((stop) => {
+      const item = items.get(stop.id);
+      if (!item || item.assessment?.subject === 'excluded')
+        throw new Error(
+          'Itinerary stops must reference saved in-scope results.',
+        );
+      let coordinates = null;
+      if (stop.coordinates) {
+        const { lat, lon, sourceUrl } = stop.coordinates;
+        if (
+          !Number.isFinite(lat) ||
+          Math.abs(lat) > 90 ||
+          !Number.isFinite(lon) ||
+          Math.abs(lon) > 180
+        )
+          throw new Error(
+            'Route coordinates must be valid latitude and longitude.',
+          );
+        const url = canonicalUrl(sourceUrl);
+        if (!url || !item.evidence.some((e) => canonicalUrl(e.url) === url))
+          throw new Error(
+            'Coordinates need a source in that stop’s saved evidence.',
+          );
+        coordinates = { lat, lon, sourceUrl: url };
+      }
+      return {
+        id: stop.id,
+        time: string(stop.time || '', 80),
+        note: string(stop.note || '', 800),
+        coordinates,
+      };
+    });
+    if (new Set(stops.map((s) => s.id)).size !== stops.length)
+      throw new Error('Each itinerary stop must be distinct.');
+    itinerary = {
+      date: string(source.date || '', 120),
+      timezone: string(source.timezone || '', 100),
+      indoorSwap: string(source.indoorSwap || '', 1000),
+      nextAction: string(source.nextAction || '', 600),
+      stops,
+    };
+  }
+  return { collections, results, references, approach, itinerary };
 }
 export function reportData(run, notes = {}) {
   return {

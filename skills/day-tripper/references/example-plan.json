@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "title": "A day worth heading out for",
+  "brief": "Fictional demonstration for two adults looking for an easy day of art, independent food and a short waterside walk in an illustrative UK town. Budget and travel details are examples only. Real plans must verify the exact date, opening hours, prices, tickets, weather and transport from current sources.",
+  "offer": "Day preferences: art, independent food, short walkable legs, four stops at most and an indoor swap.",
+  "territory": "Illustrative UK town",
+  "exclusions": [],
+  "collections": [
+    {
+      "id": "ideas",
+      "kind": "places",
+      "title": "Places & ideas",
+      "unit": "venue or activity source pages",
+      "criteria": [
+        {
+          "id": "interests",
+          "label": "Interests",
+          "question": "How well does the evidenced activity suit art, independent food or a pleasant short walk?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "pace",
+          "label": "Pace",
+          "question": "Does the source support an unhurried visit suitable for the stated party?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "practicality",
+          "label": "Practicality",
+          "question": "How well do the evidenced costs, access and booking arrangements fit the brief? Unknown practical facts remain unknown.",
+          "weight": 2,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "weather",
+          "label": "Weather option",
+          "question": "Does the source support a useful indoor activity or an outdoor activity suited to the brief?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "independent gallery museum lunch riverside walk day out UK town visitor information",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "kind": "events",
+      "title": "What’s on sources",
+      "unit": "event listing pages",
+      "criteria": [
+        {
+          "id": "interest",
+          "label": "Interest",
+          "question": "How well do the listed activities match art, food and an easy day out?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "dates",
+          "label": "Date evidence",
+          "question": "How direct and specific is the source’s event-date information for the brief? A recurring name alone is insufficient.",
+          "weight": 2,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "access",
+          "label": "Practical access",
+          "question": "Does the listing supply useful location, ticket or access information for a two-person visit?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK town arts exhibitions markets events visitor listings October 2026",
+          "numResults": 20
+        }
+      ]
+    }
+  ]
+}

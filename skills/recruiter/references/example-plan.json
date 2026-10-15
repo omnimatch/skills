@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "title": "Find the experience your role needs",
+  "brief": "Fictional demonstration for an employer hiring an operations improvement lead. Evaluate public professional experience against the work: process improvement, delivery ownership and stakeholder coordination. Use the same job-related rubric for every profile. Do not assess protected traits, personality or presumed availability.",
+  "offer": "Role brief: lead practical operations improvement, own delivery projects and coordinate stakeholders in a UK manufacturing context.",
+  "territory": "United Kingdom",
+  "exclusions": [],
+  "collections": [
+    {
+      "id": "candidates",
+      "kind": "people",
+      "title": "Candidate research",
+      "unit": "public professional profile pages",
+      "criteria": [
+        {
+          "id": "improvement",
+          "label": "Improvement work",
+          "question": "What professional evidence supports practical process improvement relevant to this role?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "delivery",
+          "label": "Delivery ownership",
+          "question": "What professional evidence supports owning projects through implementation rather than only advising?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "stakeholders",
+          "label": "Stakeholders",
+          "question": "What professional evidence supports coordination across operational teams and senior stakeholders?",
+          "weight": 2,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "sector",
+          "label": "Sector context",
+          "question": "How relevant is the stated manufacturing or comparable operational experience to this brief?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "operations improvement lead manufacturing UK process improvement delivery professional profile",
+          "numResults": 25
+        },
+        {
+          "query": "continuous improvement implementation programme lead United Kingdom professional profile",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "market",
+      "kind": "news",
+      "title": "Market context",
+      "unit": "public talent-market source pages",
+      "criteria": [
+        {
+          "id": "role",
+          "label": "Role relevance",
+          "question": "Does this source address comparable operations improvement work?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "geography",
+          "label": "Geography",
+          "question": "Does the source explicitly cover the requested UK employment market?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "method",
+          "label": "Evidence quality",
+          "question": "Is the source’s stated basis, date and sample sufficient to use as contextual evidence?",
+          "weight": 2,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK operations continuous improvement manager salary survey methodology 2026",
+          "numResults": 20
+        }
+      ]
+    }
+  ]
+}

@@ -31,9 +31,13 @@ export function validatePlan(raw) {
     territory: text(raw.territory, 'Territory', 500),
     exclusions: (raw.exclusions || []).map((v) => text(v, 'Exclusion', 500)),
     collections: raw.collections.map((c) => {
-      if (!['companies', 'people', 'events', 'news'].includes(c.kind))
+      if (
+        !['companies', 'people', 'events', 'news', 'jobs', 'places'].includes(
+          c.kind,
+        )
+      )
         throw new Error(
-          'Collection kind must be companies, people, events or news.',
+          'Collection kind must be companies, people, events, news, jobs or places.',
         );
       if (
         !Array.isArray(c.criteria) ||

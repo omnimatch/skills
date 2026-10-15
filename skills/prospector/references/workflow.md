@@ -6,11 +6,11 @@
 
 Top-level fields: `version: 1`, `title`, `brief`, `offer`, `territory`, `exclusions: string[]`, and `collections` (one to six).
 
-Each collection has a unique lowercase `id`, `kind` (`companies`, `people`, `events` or `news`), `title`, `unit`, `criteria`, and `searches`. Do not combine different entity types in one ranked collection. The unit must match what the source returns: people profiles, company pages, news articles or event listing pages. Event discovery alone does not establish individual attendance or occurrence dates.
+Each collection has a unique lowercase `id`, `kind` (`companies`, `people`, `events`, `news`, `jobs` or `places`), `title`, `unit`, `criteria`, and `searches`. Do not combine different entity types in one ranked collection. The unit must match what the source returns: profile pages, company pages, news articles, vacancy pages, venue/activity sources or event listing pages. Event discovery alone does not establish individual attendance or occurrence dates.
 
 Each criterion has `id`, `label`, `question`, `weight` (above zero, at most ten), optional `required` boolean, and `levels`: two to five descriptions ordered from weakest to strongest fit. A collection needs three to eight nonredundant criteria for its radar. Do not invent dimensions just to reach eight. Keep uncertainty separate from levels. A required criterion is reported as met at a supported score of at least 0.75, not met below that, and unverified without supporting evidence.
 
-Each search has `query`, `numResults` (1–100; defaults to 25), and optional `since` (ISO timestamp). At most twenty searches per collection and sixty per plan. Exa's company and people categories do not accept publication-date filters, so do not supply `since` for them. The runner uses the company/people/news categories as appropriate and ordinary web discovery for event pages. A publication-date filter does not verify an event's occurrence date.
+Each search has `query`, `numResults` (1–100; defaults to 25), and optional `since` (ISO timestamp). At most twenty searches per collection and sixty per plan. Exa's company and people categories do not accept publication-date filters, so do not supply `since` for them. The runner uses the company/people/news categories as appropriate and ordinary web discovery for event, job and place sources. A publication-date filter does not verify an event's occurrence date or a vacancy's open status.
 
 All searches finish before evaluation. Each result retains source text (up to 12,000 characters per returned page), query provenance and retrieval/publication dates where available. Exact canonical URLs merge within a collection; tracking parameters are removed while identity-bearing query parameters remain. This is not entity resolution across unrelated URLs. Parent and subsidiary records are not automatically merged.
 
@@ -41,7 +41,7 @@ Optionally write a separate notes JSON after inspecting saved evidence:
 
 Top picks reference at most six existing non-excluded results within their own collection. Usually select three; fewer when the evidence supports fewer. They do not change scores or replace the full collection. Each written approach needs result references. The host is responsible for whether statements follow from the cited evidence; identifier validation cannot prove factual accuracy.
 
-Generate the report with `report --run DIRECTORY --notes /absolute/notes.json`. Notes are saved to that directory for offline regeneration. Do not add prospects or unsupported facts through notes.
+Generate the report with `report --run DIRECTORY --notes /absolute/notes.json`. Notes are saved to that directory for offline regeneration. Use collection IDs from the actual run and existing result IDs, replacing the example placeholders. Do not add new subjects or unsupported facts through notes.
 
 ## Report and follow-up
 

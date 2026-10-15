@@ -121,7 +121,7 @@ function Radar({ collection, items, active }) {
         const words = label(c).split(' '),
           half = Math.ceil(words.length / 2),
           lines =
-            words.length > 2
+            words.length > 1 && label(c).length > 10
               ? [words.slice(0, half).join(' '), words.slice(half).join(' ')]
               : [label(c)];
         return (
@@ -245,6 +245,65 @@ function exportCsv(collection, items) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+function RouteSketch({ stops }) {
+  const located = stops
+    .map((stop, i) => ({ ...stop.coordinates, index: i + 1 }))
+    .filter((p) => Number.isFinite(p.lat));
+  if (located.length < 2)
+    return (
+      <p className="route-unavailable">
+        A route sketch needs source-verified coordinates for at least two stops.
+      </p>
+    );
+  const lats = located.map((p) => p.lat),
+    lons = located.map((p) => p.lon);
+  const midLat = (Math.max(...lats) + Math.min(...lats)) / 2;
+  const cos = Math.cos((midLat * Math.PI) / 180);
+  const xs = lons.map((lon) => lon * cos),
+    ys = lats;
+  const width = Math.max(...xs) - Math.min(...xs),
+    height = Math.max(...ys) - Math.min(...ys);
+  const span = Math.max(width, height, 0.001);
+  const points = located.map((p, i) => ({
+    ...p,
+    x: 200 + ((xs[i] - (Math.max(...xs) + Math.min(...xs)) / 2) / span) * 260,
+    y: 160 - ((p.lat - midLat) / span) * 260,
+  }));
+  return (
+    <figure className="route-sketch">
+      <svg
+        viewBox="0 0 400 320"
+        role="img"
+        aria-label="Route sketch showing stop order, not street directions"
+      >
+        <path
+          d={points.map((p, i) => `${i ? 'L' : 'M'}${p.x},${p.y}`).join(' ')}
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="2"
+          strokeDasharray="5 7"
+        />
+        {points.map((p) => (
+          <g key={p.index}>
+            <circle cx={p.x} cy={p.y} r="17" fill="var(--accent)" />
+            <text
+              x={p.x}
+              y={p.y + 1}
+              textAnchor="middle"
+              dominantBaseline="middle"
+            >
+              {p.index}
+            </text>
+          </g>
+        ))}
+      </svg>
+      <figcaption>
+        {located.length} of {stops.length} stops located. Stop order only; check
+        actual routes and travel times.
+      </figcaption>
+    </figure>
+  );
+}
 function Report({ data }) {
   const [lane, setLane] = useState(data.collections[0]?.id);
   const [selected, setSelected] = useState(null);
@@ -355,8 +414,8 @@ function Report({ data }) {
       </header>
       {data.demo && (
         <p className="demo-notice">
-          Interactive demonstration. All companies, people and events are
-          fictional. No API calls were made.
+          Interactive demonstration. All demonstration records are fictional. No
+          API calls were made.
         </p>
       )}
       <section className="report-intro">
@@ -553,8 +612,8 @@ function Report({ data }) {
               )}
               <p className="score-caption">
                 Fit reflects the known criteria. Evidence coverage shows how
-                much of the rubric is supported. Neither is a probability of a
-                sale.
+                much of the rubric is supported. Scores support human review;
+                they do not predict outcomes.
               </p>
               <details className="evidence-panel">
                 <summary>
@@ -708,6 +767,69 @@ function Report({ data }) {
                 </button>
               ) : null;
             })}
+          </div>
+        </section>
+      )}
+      {data.notes?.itinerary && (
+        <section className="day-plan" aria-label="Day plan">
+          <div className="plot-heading">
+            <h2>Your day, in order</h2>
+            <span>
+              {data.notes.itinerary.date} · {data.notes.itinerary.timezone}
+            </span>
+          </div>
+          <div className="itinerary-layout">
+            <ol className="itinerary-stops">
+              {data.notes.itinerary.stops.map((stop, index) => {
+                const owner = data.collections.find((c) =>
+                  c.items.some((i) => i.id === stop.id),
+                );
+                const item = owner?.items.find((i) => i.id === stop.id);
+                return item ? (
+                  <li key={stop.id}>
+                    <span className="stop-number">{index + 1}</span>
+                    <div>
+                      <span className="stop-time">{stop.time}</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setLane(owner.id);
+                          setSelected(stop.id);
+                          setQuery('');
+                          setFilter('all');
+                          setDestination(stop.id);
+                        }}
+                      >
+                        {item.title}
+                        <Icon name="arrow" />
+                      </button>
+                      <p>{stop.note}</p>
+                      {stop.coordinates && (
+                        <a
+                          href={safeUrl(stop.coordinates.sourceUrl)}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Coordinate source <Icon name="external" />
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ) : null;
+              })}
+            </ol>
+            <div>
+              <RouteSketch stops={data.notes.itinerary.stops} />
+              {data.notes.itinerary.indoorSwap && (
+                <p>
+                  <strong>If it rains</strong> ·{' '}
+                  {data.notes.itinerary.indoorSwap}
+                </p>
+              )}
+              {data.notes.itinerary.nextAction && (
+                <p className="next-action">{data.notes.itinerary.nextAction}</p>
+              )}
+            </div>
           </div>
         </section>
       )}

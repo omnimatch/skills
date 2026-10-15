@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "title": "A clearer route to your next role",
+  "brief": "Fictional demonstration for a candidate with evidenced operations and delivery experience seeking UK operations roles. Keep responsibilities, location, working pattern and salary evidence distinct. No applications or messages are sent.",
+  "offer": "Candidate goals and confirmed experience: operations improvement, delivery projects and stakeholder coordination; hybrid work in the United Kingdom.",
+  "territory": "United Kingdom",
+  "exclusions": ["Confirmed closed vacancies for this current search"],
+  "collections": [
+    {
+      "id": "jobs",
+      "kind": "jobs",
+      "title": "Jobs",
+      "unit": "vacancy pages",
+      "criteria": [
+        {
+          "id": "contribution",
+          "label": "Contribution",
+          "question": "How well do the advertised responsibilities match the candidate’s confirmed operations improvement and delivery experience?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "scope",
+          "label": "Scope",
+          "question": "How well does the advertised level and responsibility match an experienced individual contributor or team lead seeking hands-on delivery?",
+          "weight": 2,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "working_pattern",
+          "label": "Working pattern",
+          "question": "Does the stated working pattern suit hybrid work? Assess advertised facts; missing terms are unknown.",
+          "weight": 1,
+          "levels": [
+            "Fully on-site",
+            "Some flexibility",
+            "Hybrid with explicit terms",
+            "Hybrid terms clearly match"
+          ],
+          "required": false
+        },
+        {
+          "id": "location",
+          "label": "Location",
+          "question": "Does the advertised work location fit the candidate’s stated UK search?",
+          "weight": 1,
+          "levels": ["Outside territory", "Inside stated territory"],
+          "required": true
+        }
+      ],
+      "searches": [
+        {
+          "query": "operations improvement delivery lead hybrid UK careers vacancy",
+          "numResults": 25
+        },
+        {
+          "query": "continuous improvement operations project manager United Kingdom hiring",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "recruiters",
+      "kind": "people",
+      "title": "Recruiters",
+      "unit": "public recruiter profiles",
+      "criteria": [
+        {
+          "id": "specialism",
+          "label": "Specialism",
+          "question": "Does their public work cover operations, delivery or continuous improvement recruitment?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "market",
+          "label": "Market",
+          "question": "Does their public professional coverage include the candidate’s UK market?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "route",
+          "label": "Useful route",
+          "question": "Does the profile state a relevant recruiting remit or public professional application route? Do not infer a relationship.",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK specialist recruiter operations continuous improvement delivery roles",
+          "numResults": 25
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "kind": "events",
+      "title": "Communities & events",
+      "unit": "community or event listing pages",
+      "criteria": [
+        {
+          "id": "topic",
+          "label": "Topic",
+          "question": "How relevant is the listed community or event to operations improvement and delivery?",
+          "weight": 3,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "access",
+          "label": "Access",
+          "question": "Does the source describe a practical public participation route?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        },
+        {
+          "id": "location",
+          "label": "Location",
+          "question": "How practical is the stated location or online format for the candidate’s UK search?",
+          "weight": 1,
+          "levels": ["Poor fit", "Partial fit", "Good fit", "Strong fit"],
+          "required": false
+        }
+      ],
+      "searches": [
+        {
+          "query": "UK operations improvement professional community events careers networking",
+          "numResults": 20
+        }
+      ]
+    }
+  ]
+}

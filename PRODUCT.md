@@ -12,7 +12,7 @@ People using their own coding or file-capable agents to research potential custo
 
 ## Product Purpose
 
-Prospector is the first free Omnimatch skill, demonstrating Omnimatch's research method as part of its consultancy offering. It works without an Omnimatch account and uses the person's own provider keys.
+Prospector, Job Scout, Recruiter and Day Tripper are free Omnimatch skills, demonstrating Omnimatch's research method as part of its consultancy offering. Each works without an Omnimatch account or databases and uses the person's own provider keys.
 
 ## Operating Context
 

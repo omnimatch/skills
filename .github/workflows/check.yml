@@ -14,5 +14,5 @@ jobs:
       - run: npm ci
       - run: npm run build:report
       - run: npm run lint
-      - run: git diff --exit-code -- skills/prospector/assets/report-template.html
+      - run: git diff --exit-code -- skills
       - run: npm test
