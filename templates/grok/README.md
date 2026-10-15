@@ -1,31 +1,32 @@
-# Prospector for Grok Bot
+# Grok Bot templates
 
-This companion is a source template for creating a Prospector bot. It uses the same public skill, runner and offline report as the Codex/Claude version, with no Omnimatch account dependency.
+Public native templates, each using the recipient's own provider keys and computer. No Omnimatch account, databases or backend is required.
 
-## Create the bot
+| Bot | Public template | Pinned code | Source recipe |
+| --- | --- | --- | --- |
+| Prospector | [Install](https://x.ai/bot/Sx3cWiGu8GvbbZCo96upu) | v0.2.0 | [Profile](PROFILE.md), [instructions](INSTRUCTIONS.md), [setup](SETUP.md) |
+| Job Scout | [Install](https://x.ai/bot/aR6yBucgiqls8Z4WurnSI) | v0.3.0 | [Recipe](job-scout/README.md) |
+| Recruiter | [Install](https://x.ai/bot/LY-A0Dq9htK2xHtxaiaT0) | v0.3.0 | [Recipe](recruiter/README.md) |
+| Day Tripper | [Install](https://x.ai/bot/2oFg1i480oDW6f-UuLTiN) | v0.3.0 | [Recipe](day-tripper/README.md) |
 
-1. Create a bot named Prospector in your Grok Bot workspace.
-2. Use [PROFILE.md](PROFILE.md) as its description and [INSTRUCTIONS.md](INSTRUCTIONS.md) as its instructions. Include [SETUP.md](SETUP.md) as setup knowledge, along with the public Prospector skill reference.
-3. Give it access to its own computer's command execution and files. The first conversation checks the runtime and fetches the tagged public skill. No integrations that can send messages are required.
-4. Test the offline demo. Configure your own keys privately only if you want to test real research. Set no recurring routine by default.
-5. In bot settings, use **Share as Template**, inspect the included material, choose the intended audience and publish. Keep the setup knowledge, public skill reference and generic instructions. Exclude credentials, personal memories, client briefs and saved research.
+All four were published and their native exported context inspected on 15 October 2026. Each bot ran its fictional demo on its own computer: Prospector on Node 22, the companions on Node 24. The verified output is an openable interactive HTML report. Native interactive rendering inside chat was not verified.
 
-The native Grok template share link must be created in your signed-in Grok Bot workspace. This repository does not contain an invented share link or an unofficial import schema.
+## What transfers
 
-## What carries across
+Grok's official guide states that templates package instructions, relevant skills/memories and specified plugins, while custom scripts and non-standard MCP code do not transfer. Each template therefore bootstraps its public pinned skill on the recipient bot's own computer and checks Node 22+. The recipient privately supplies their own Exa key and either OpenAI Decisions or Cloudflare Clef credentials.
 
-Grok's official guide states that templates package instructions, relevant skills/memories and specified plugins, while custom scripts and non-standard MCP code are not transferred. For that reason this template explicitly bootstraps the public skill on the new bot's computer. Each recipient configures their own providers.
+Each export contains the generic profile and namespaced role, setup and onboarding skills: `<skill-name>`, `<skill-name>-setup` and `<skill-name>-getting-started`. The last is its first-run skill. Avoid a shared `getting-started` name, which can collide when several bots are installed. Prospector, Job Scout and Day Tripper use reviewed template version 2; Recruiter already used namespaced onboarding in version 1.
 
-The radar report is a self-contained HTML file. Prefer a working interactive preview when the installed Grok Bot supports one; otherwise attach or open it in a browser. Embedded chat rendering has not been verified in Grok.
+No credentials, private research, client briefs, CVs, travel preferences, conversation history, plugins or routines are exported. Prospector includes one generic role/privacy memory and Recruiter includes two generic role/privacy conventions; Job Scout and Day Tripper export no memories. The companion guides record these contents.
+
+## Create or update a template
+
+1. Create the named bot in your Grok Bot workspace. Use its profile, instructions and setup source files linked above. Keep the whole role skill folder on its computer; no npm install or report build is needed.
+2. Save the generic role, first-use bootstrap and brief onboarding as namespaced skills. Set the template's first-run skill explicitly. Do not overwrite another bot's skills or reuse its credentials.
+3. Run the offline demo and verify the report in an actual browser or supported preview. Do not run paid research merely to prepare a template. Add no routine by default.
+4. Use **Share as Template** in bot settings. Inspect the native context review, retaining only the generic role, public skill reference and bootstrap instructions. Exclude personal context and secrets.
+5. Publish the reviewed draft and copy Grok's actual share link. Do not invent a link or an unofficial import schema.
+
+Prefer a working interactive artifact/file preview when the installed Grok build supports one. Otherwise attach or open the self-contained report from its computer. Preserve the radar, searchable scrollable results, source evidence and any itinerary, alongside a concise sourced chat answer.
 
 Reference checked 15 October 2026: [Templates for Grok Bot](https://x.ai/bot/guides/templates-for-grok-bot).
-
-## Published Prospector template
-
-[Install Prospector in Grok Bot](https://x.ai/bot/Sx3cWiGu8GvbbZCo96upu).
-
-The native template was published on 15 October 2026 after inspecting its generic instructions, three setup/role skills and generic memory. Its bot ran the offline demo on Node 22. The verified output is an openable interactive HTML report; native in-chat interactive rendering was not verified. The template bootstraps v0.2.0 and does not include credentials, client research, routines or plugins.
-
-## Companion skills
-
-Source recipes for [Job Scout](job-scout/README.md), [Recruiter](recruiter/README.md) and [Day Tripper](day-tripper/README.md) bootstrap their respective standalone folders from v0.3.0. Each bot has its own setup, role and report. Review a template's actual contents before publishing; the source files in this repository do not by themselves prove native publication.

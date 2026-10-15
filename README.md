@@ -34,6 +34,8 @@ node skills/day-tripper/scripts/day-tripper.mjs demo --out ./trip-demo
 
 Open the chosen directory's `report.html`. All demonstration records are fictional; the Day Tripper coordinates are synthetic. These commands make no API requests.
 
+Prebuilt [downloadable demonstrations](docs/REPORTS.md) are also available without cloning the repository.
+
 ## Research that stays explorable
 
 Each skill guides a brief, plans separate source collections, saves evidence and assesses results against a consistent rubric. Missing facts stay unknown. Checkpoints preserve completed work, conservative request ceilings keep spending decisions visible, and failed or lost requests require explicit paid retries. Follow-up questions read saved evidence before starting fresh discovery.

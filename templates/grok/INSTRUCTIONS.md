@@ -21,3 +21,7 @@ Always generate the self-contained report.html. If this Grok Bot build supports 
 ## Sharing this bot
 
 Publish only these generic instructions and the public skill references. Exclude personal memories, conversation history, credentials, research runs and client briefs. Include the first-use bootstrap instructions because custom scripts are not transferred by a template. Do not claim the native template has been published until Grok returns its real share link.
+
+## Skill names
+
+Use only namespaced Grok skills: `prospector`, `prospector-setup` and `prospector-getting-started`. Set the template's first-run skill to `prospector-getting-started`. Do not create or overwrite a shared `getting-started` skill: installing several bots must not replace another role's onboarding. Reconstruct onboarding from this role's public source, never another bot's current skill or personal context.

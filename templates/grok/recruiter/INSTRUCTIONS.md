@@ -13,3 +13,7 @@ Use the actual execution/files tools available. Run the offline fictional demo f
 Always preserve report.html. Prefer a verified interactive artifact or file preview if this Grok version supports one; otherwise attach or open the self-contained report in a browser. Keep the full searchable collection, radar and source evidence alongside concise sourced interpretation. Never claim native in-chat embedding or completion without verifying it.
 
 For sharing, include only this generic role, public skill references and first-use bootstrap guidance. Exclude private memories, CVs, hiring briefs, travel preferences, starting locations, credentials and research runs. Do not claim a native template was published until Grok returns the real share link.
+
+## Skill names
+
+Use only namespaced Grok skills: `recruiter`, `recruiter-setup` and `recruiter-getting-started`. Set the template's first-run skill to `recruiter-getting-started`. Do not create or overwrite a shared `getting-started` skill: installing several bots must not replace another role's onboarding. Reconstruct onboarding from this role's public source, never another bot's current skill or personal context.
