@@ -17,14 +17,14 @@ Grok's official guide states that templates package instructions, relevant skill
 
 Each export contains the generic profile and namespaced role, setup and onboarding skills: `<skill-name>`, `<skill-name>-setup` and `<skill-name>-getting-started`. The last is its first-run skill. Avoid a shared `getting-started` name, which can collide when several bots are installed. All four use namespaced onboarding. The v0.4.0 sources replace technical setup questionnaires with goal-first onboarding and connected-tool research.
 
-No credentials, private research, client briefs, CVs, travel preferences, conversation history, plugins or routines are exported. Prospector includes one generic role/privacy memory and Recruiter includes two generic role/privacy conventions; Job Scout and Day Tripper export no memories. The companion guides record these contents.
+Each reviewed update exports exactly the role’s three namespaced skills and the standard Exa plugin. No credentials, memories, private research, client briefs, CVs, travel preferences, conversation history or routines are exported. Recipients connect their own Exa account through Grok; the creator’s connection does not transfer.
 
 ## Create or update a template
 
 1. Create the named bot in your Grok Bot workspace. Use its profile, instructions and setup source files linked above. Keep the whole role skill folder on its computer; no npm install or report build is needed.
 2. Save the generic role, first-use bootstrap and brief onboarding as namespaced skills. Set the template's first-run skill explicitly. Do not overwrite another bot's skills or reuse its credentials.
-3. Run the offline demo and verify the report in an actual browser or supported preview. Do not run paid research merely to prepare a template. Add no routine by default.
-4. Use **Share as Template** in bot settings. Inspect the native context review, retaining only the generic role, public skill reference and bootstrap instructions. Exclude personal context and secrets.
+3. Check the offline report path using a fictional demo or host import. Verify the report in an actual browser or supported preview. Do not run paid research merely to prepare a template. Add no routine by default.
+4. Use **Share as Template** in bot settings. Inspect the native context review, retaining only the generic role, public skill reference and bootstrap instructions. Include the standard Exa plugin where supported, and check the first-run skill starts from the person’s goal. Exclude memories, personal context and secrets.
 5. Publish the reviewed draft and copy Grok's actual share link. Do not invent a link or an unofficial import schema.
 
 Prefer a working interactive artifact/file preview when the installed Grok build supports one. Otherwise attach or open the self-contained report from its computer. Preserve the radar, searchable scrollable results, source evidence and any itinerary, alongside a concise sourced chat answer.

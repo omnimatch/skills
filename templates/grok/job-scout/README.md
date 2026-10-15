@@ -10,6 +10,6 @@ Prefer a working interactive preview when available. Always retain the self-cont
 
 [Install Job Scout in Grok Bot](https://x.ai/bot/aR6yBucgiqls8Z4WurnSI).
 
-Published 15 October 2026 after the bot ran the fictional demo on its own Node 24 computer and checked the browser report. The reviewed export contains the generic profile and three role/setup/getting-started skills, with no memories, plugins or routines. It bootstraps public v0.4.0 code on each recipient's computer. Native interactive rendering inside chat was not verified; the HTML report remains openable.
+Published and updated on 15 October 2026. The reviewed update retains the same share URL and includes the generic profile, job-scout, job-scout-setup and job-scout-getting-started skills, with the last set as first-run, plus the standard Exa plugin. It excludes memories, routines, credentials and private context. Each recipient connects their own Exa account and quietly bootstraps public v0.4.0 report tools on their bot’s own computer.
 
-The published template was subsequently updated to reviewed version 2, using job-scout-getting-started as its first-run skill. The share URL is unchanged. Its role, setup and onboarding names are distinct from the other bots.
+Normal onboarding asks about the person’s goal, with no evaluator/key/budget questionnaire. The host uses connected search and its own rubric assessment, then imports saved evidence for the full radar report. The bot confirmed fictional offline demo/import output without provider credentials. Native interactive rendering inside chat was not verified; the HTML report remains openable.

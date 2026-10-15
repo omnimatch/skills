@@ -52,8 +52,8 @@ Replace placeholders with the actual plan’s collection IDs, every criterion ID
 Every item URL must appear in a search receipt for its collection. Additional fetched source passages may use their own actual URLs. Preserve their retrieval timestamps and optional ISO `publishedAt`; never invent publication dates. Merge duplicate canonical URLs within each collection before import, preserving their passages. Do not merge people from names alone. Keep no more than 100 returned URLs per query; use further planned queries to broaden coverage.
 
 ```sh
-node "$PROSPECTOR" import --plan /absolute/plan.json --input /absolute/research.json --out /absolute/prospector-runs/research
-node "$PROSPECTOR" results --run /absolute/prospector-runs/research --evidence
+node /absolute/path/to/prospector/scripts/prospector.mjs import --plan /absolute/plan.json --input /absolute/research.json --out /absolute/prospector-runs/research
+node /absolute/path/to/prospector/scripts/prospector.mjs results --run /absolute/prospector-runs/research --evidence
 ```
 
 The importer creates `run.json` and `report.html`. It accepts an identical import idempotently, but refuses to overwrite different research or an API-run checkpoint. For added evidence or revised assessments, save a new snapshot directory containing the accumulated research; keep previous snapshots. Do not mislabel this as resumable direct-API execution. The report identifies host-tool collection and host assessment, and shows no invented billing totals.

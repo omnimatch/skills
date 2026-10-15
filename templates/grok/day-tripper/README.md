@@ -10,4 +10,6 @@ Prefer a working interactive preview when available. Always retain the self-cont
 
 [Install Day Tripper in Grok Bot](https://x.ai/bot/2oFg1i480oDW6f-UuLTiN).
 
-Published 15 October 2026 from the reviewed version 2 draft. The bot ran the fictional v0.4.0 demo on its own Node 24 computer and checked the browser report, including the itinerary. Its export contains the generic profile and day-tripper, day-tripper-setup and day-tripper-getting-started skills, with no memories, credentials, private travel information, plugins or routines. Coordinates in the demo are synthetic. Native interactive chat rendering was not verified; the HTML report remains openable.
+Published and updated on 15 October 2026. The reviewed update retains the same share URL and includes the generic profile, day-tripper, day-tripper-setup and day-tripper-getting-started skills, with the last set as first-run, plus the standard Exa plugin. It excludes memories, routines, credentials and private context. Each recipient connects their own Exa account and quietly bootstraps public v0.4.0 report tools on their bot’s own computer.
+
+Normal onboarding asks about the person’s goal, with no evaluator/key/budget questionnaire. The host uses connected search and its own rubric assessment, then imports saved evidence for the full radar report. The bot confirmed fictional offline demo/import output without provider credentials. Native interactive rendering inside chat was not verified; the HTML report remains openable.
