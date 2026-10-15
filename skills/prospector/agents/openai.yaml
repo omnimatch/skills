@@ -1,4 +1,4 @@
 interface:
   display_name: "Prospector"
   short_description: "Find prospects and explore the evidence"
-  default_prompt: "Use $prospector to set up my research providers, find suitable prospects and create an interactive radar report."
+  default_prompt: "Use $prospector to find suitable prospects and create an interactive radar report."

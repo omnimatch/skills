@@ -1,4 +1,4 @@
 interface:
   display_name: "Recruiter"
   short_description: "Research candidates against job requirements"
-  default_prompt: "Use $recruiter to guide my setup, research my request and show an interactive evidence report."
+  default_prompt: "Use $recruiter to find people for the role I’m hiring for and show an interactive evidence report."

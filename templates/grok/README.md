@@ -1,21 +1,21 @@
 # Grok Bot templates
 
-Public native templates, each using the recipient's own provider keys and computer. No Omnimatch account, databases or backend is required.
+Public native templates, each using the recipient’s own connected search tools and computer. No Omnimatch account, databases or backend is required.
 
 | Bot | Public template | Pinned code | Source recipe |
 | --- | --- | --- | --- |
-| Prospector | [Install](https://x.ai/bot/Sx3cWiGu8GvbbZCo96upu) | v0.2.0 | [Profile](PROFILE.md), [instructions](INSTRUCTIONS.md), [setup](SETUP.md) |
-| Job Scout | [Install](https://x.ai/bot/aR6yBucgiqls8Z4WurnSI) | v0.3.0 | [Recipe](job-scout/README.md) |
-| Recruiter | [Install](https://x.ai/bot/LY-A0Dq9htK2xHtxaiaT0) | v0.3.0 | [Recipe](recruiter/README.md) |
-| Day Tripper | [Install](https://x.ai/bot/2oFg1i480oDW6f-UuLTiN) | v0.3.0 | [Recipe](day-tripper/README.md) |
+| Prospector | [Install](https://x.ai/bot/Sx3cWiGu8GvbbZCo96upu) | v0.4.0 | [Profile](PROFILE.md), [instructions](INSTRUCTIONS.md), [setup](SETUP.md) |
+| Job Scout | [Install](https://x.ai/bot/aR6yBucgiqls8Z4WurnSI) | v0.4.0 | [Recipe](job-scout/README.md) |
+| Recruiter | [Install](https://x.ai/bot/LY-A0Dq9htK2xHtxaiaT0) | v0.4.0 | [Recipe](recruiter/README.md) |
+| Day Tripper | [Install](https://x.ai/bot/2oFg1i480oDW6f-UuLTiN) | v0.4.0 | [Recipe](day-tripper/README.md) |
 
 All four were published and their native exported context inspected on 15 October 2026. Each bot ran its fictional demo on its own computer: Prospector on Node 22, the companions on Node 24. The verified output is an openable interactive HTML report. Native interactive rendering inside chat was not verified.
 
 ## What transfers
 
-Grok's official guide states that templates package instructions, relevant skills/memories and specified plugins, while custom scripts and non-standard MCP code do not transfer. Each template therefore bootstraps its public pinned skill on the recipient bot's own computer and checks Node 22+. The recipient privately supplies their own Exa key and either OpenAI Decisions or Cloudflare Clef credentials.
+Grok's official guide states that templates package instructions, relevant skills/memories and specified plugins, while custom scripts and non-standard MCP code do not transfer. Each template therefore bootstraps its public pinned skill on the recipient bot's own computer and checks Node 22+. Normal research uses connected Exa and the host assistant’s own assessment. The recipient connects their own search account through Grok. Direct API keys and a separate evaluator are an optional advanced path.
 
-Each export contains the generic profile and namespaced role, setup and onboarding skills: `<skill-name>`, `<skill-name>-setup` and `<skill-name>-getting-started`. The last is its first-run skill. Avoid a shared `getting-started` name, which can collide when several bots are installed. Prospector, Job Scout and Day Tripper use reviewed template version 2; Recruiter already used namespaced onboarding in version 1.
+Each export contains the generic profile and namespaced role, setup and onboarding skills: `<skill-name>`, `<skill-name>-setup` and `<skill-name>-getting-started`. The last is its first-run skill. Avoid a shared `getting-started` name, which can collide when several bots are installed. All four use namespaced onboarding. The v0.4.0 sources replace technical setup questionnaires with goal-first onboarding and connected-tool research.
 
 No credentials, private research, client briefs, CVs, travel preferences, conversation history, plugins or routines are exported. Prospector includes one generic role/privacy memory and Recruiter includes two generic role/privacy conventions; Job Scout and Day Tripper export no memories. The companion guides record these contents.
 

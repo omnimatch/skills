@@ -624,10 +624,26 @@ function Report({ data }) {
                   </span>
                 </summary>
                 <div className="evidence-scroll">
-                  {active.evidence.map((e) => (
+                  {data.provider === 'host' && (
+                    <section>
+                      <h3>Assessment reasons</h3>
+                      <p>{active.assessment?.reason}</p>
+                      {collection.criteria.map((c) => (
+                        <p key={c.id}>
+                          <strong>{c.label}</strong> · {part(active, c)?.reason}
+                          {part(active, c)?.evidence?.length > 0
+                            ? ` (sources ${part(active, c)
+                                .evidence.map((i) => i + 1)
+                                .join(', ')})`
+                            : ''}
+                        </p>
+                      ))}
+                    </section>
+                  )}
+                  {active.evidence.map((e, index) => (
                     <section key={e.url + e.text}>
                       <a href={safeUrl(e.url)} target="_blank" rel="noreferrer">
-                        {host(e.url)} <Icon name="external" />
+                        {index + 1}. {host(e.url)} <Icon name="external" />
                       </a>
                       <p className="evidence-date">
                         Retrieved {date(e.retrievedAt)}
@@ -836,7 +852,9 @@ function Report({ data }) {
       <details className="research-log">
         <summary>
           Research plan and coverage{' '}
-          <span>{data.searches.length} searches completed</span>
+          <span>
+            {data.searches.filter((s) => s.complete).length} searches completed
+          </span>
         </summary>
         <div className="log-content">
           <h3>The brief</h3>
@@ -846,16 +864,17 @@ function Report({ data }) {
           )}
           <h3>Search coverage</h3>
           <p>
-            {searches.length} of {collection.plannedSearches} planned searches
-            completed for this collection. Counts refer to {collection.unit}.
-            Returned pages do not establish complete market coverage.
+            {searches.filter((s) => s.complete).length} of{' '}
+            {collection.plannedSearches} planned searches completed for this
+            collection. Counts refer to {collection.unit}. Returned pages do not
+            establish complete market coverage.
           </p>
           <ul>
             {searches.map((s) => (
               <li key={s.query}>
                 <span>{s.query}</span>
                 <span>
-                  {s.returned} returned
+                  {s.returned} returned{s.complete ? '' : ' · incomplete'}
                   {s.atCapacity ? ' · provider result limit reached' : ''}
                 </span>
               </li>
@@ -877,20 +896,30 @@ function Report({ data }) {
           </ul>
           <h3>Method</h3>
           <p>
-            Searches collect source text through Exa. Exact canonical URLs are
-            deduplicated within each collection; distinct pages about one entity
-            may remain separate. Assessments use{' '}
+            {data.provider === 'host'
+              ? `Sources and assessments were saved by ${data.model}, using ${(data.tools || []).join(', ') || 'host search tools'}.`
+              : 'Searches collect source text through Exa.'}{' '}
+            Exact canonical URLs are deduplicated within each collection;
+            distinct pages about one entity may remain separate. Assessments use{' '}
             {data.provider === 'fixture'
               ? 'fictional demonstration scores'
-              : `${data.provider} (${data.model})`}
+              : data.provider === 'host'
+                ? 'the assistant’s evidence-based rubric judgments'
+                : `${data.provider} (${data.model})`}
             . Unknown facts are preserved. Different providers' probabilities
             are not assumed to be calibrated alike.
           </p>
           <p>
-            {data.duplicates} repeated URLs merged. Local cost accounting: $
-            {Number(data.accountedUsd).toFixed(2)} of $
-            {Number(data.budgetUsd).toFixed(2)} reserved ceiling. These are
-            conservative request estimates, not an invoice.
+            {data.provider === 'host' ? (
+              'Search provenance and score justifications were supplied by the assistant; structural validation does not verify their factual accuracy. Usage is governed by your connected services; this report has no billing information.'
+            ) : (
+              <>
+                {data.duplicates} repeated URLs merged. Local cost accounting: $
+                {Number(data.accountedUsd).toFixed(2)} of $
+                {Number(data.budgetUsd).toFixed(2)} reserved ceiling. These are
+                conservative request estimates, not an invoice.
+              </>
+            )}
           </p>
         </div>
       </details>

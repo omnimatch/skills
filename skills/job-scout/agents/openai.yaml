@@ -1,4 +1,4 @@
 interface:
   display_name: "Job Scout"
   short_description: "Find jobs and credible routes into them"
-  default_prompt: "Use $job-scout to guide my setup, research my request and show an interactive evidence report."
+  default_prompt: "Use $job-scout to find jobs that fit my goals and show an interactive evidence report."

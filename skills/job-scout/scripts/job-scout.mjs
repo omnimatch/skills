@@ -14,13 +14,16 @@ import {
   saveJson,
   saveSettings,
 } from './lib/files.mjs';
+import { importResearch } from './lib/host.mjs';
 import { validatePlan } from './lib/plan.mjs';
 import { providerTarget } from './lib/providers.mjs';
 import { renderReport, reportData, validateNotes } from './lib/report.mjs';
 
 const HELP = `Job Scout by Omnimatch · Node 22+ · no Omnimatch account
 
-  setup                         Guided provider and private API-key setup
+  import --plan plan.json --input research.json --out DIRECTORY
+                                Save host-tool research and render without API keys
+  setup                         Optional direct-API setup for automated research
   setup --non-interactive --provider clef|openai --budget-usd 2
                                 Configure from environment variables only
   doctor                        Check local setup without calling any API
@@ -153,6 +156,7 @@ export async function main(args = process.argv.slice(2)) {
       provider: { type: 'string' },
       'budget-usd': { type: 'string' },
       plan: { type: 'string' },
+      input: { type: 'string' },
       out: { type: 'string' },
       run: { type: 'string' },
       notes: { type: 'string' },
@@ -233,6 +237,25 @@ export async function main(args = process.argv.slice(2)) {
     );
     console.log(
       `Fictional demo; no API calls.\n${join(directory, 'report.html')}`,
+    );
+    return;
+  }
+  if (command === 'import') {
+    if (!options.plan || !options.input || !options.out)
+      throw new Error('Supply --plan, --input and a new --out directory.');
+    const run = await importResearch({
+      plan: await readJson(resolve(options.plan)),
+      input: await readJson(resolve(options.input)),
+      directory: options.out,
+    });
+    const output = join(resolve(options.out), 'report.html');
+    await renderReport(run, output);
+    console.log(
+      JSON.stringify(
+        { status: run.status, collected: run.items.length, report: output },
+        null,
+        2,
+      ),
     );
     return;
   }

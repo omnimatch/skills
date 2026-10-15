@@ -1,6 +1,6 @@
 ---
 name: recruiter
-description: Turn an employer's hiring brief into consistent research on public professional profiles, using the user's own API keys. Guides setup, compares job-related evidence in an interactive radar report and supports a human-reviewed shortlist. Use for employer-side candidate sourcing and talent-market research, not candidate-side job search or automated hiring decisions.
+description: Turn an employer's hiring brief into consistent research on public professional profiles, using connected search tools or the user’s own API accounts. Guides setup, compares job-related evidence in an interactive radar report and supports a human-reviewed shortlist. Use for employer-side candidate sourcing and talent-market research, not candidate-side job search or automated hiring decisions.
 license: MIT
 ---
 
@@ -10,11 +10,15 @@ Help an employer define the work they need done and find public professional exp
 
 Resolve `scripts/recruiter.mjs` relative to this file and use its absolute path as `RECRUITER`. Node 22+ is required. The runner and prebuilt React report need no runtime npm install.
 
-## Guided setup
+## Start with the person’s goal
 
-Run `node "$RECRUITER" doctor`. If incomplete, read [setup](references/setup.md) and guide one setup conversation: Exa search, either OpenAI Decisions or Cloudflare Clef, and a per-run budget. Use `setup` in a user-visible private terminal, or non-interactive setup from securely supplied environment variables. Keys never go in chat, prompts, role specifications, reports or memories. Do not inspect unrelated credential stores or reuse another bot's keys. A host subscription does not prove Decisions API entitlement. Doctor checks local readiness, not provider authentication. The offline `demo --out DIRECTORY` needs no keys and makes no API calls.
+Respond in plain language and reuse what the person has already told you. For an unqualified “Are we ready?”, say “Yes — what role are you hiring for, and where?” unless an actual attempt has established a blocker. Ask only for missing facts that affect the research. Do not make users choose an evaluator, model, runtime, API or numbered budget before discussing their goal. Do not narrate routine installation or readiness checks.
 
-The recipe is free. The user's own search and evaluator accounts pay for authorised API requests.
+Quietly inspect the host’s available tools. Prefer its connected Exa plugin; use the host’s other supported web search when suitable. On Grok, discover the installed Exa search/fetch skills and actual tools, rather than demanding a separate Exa API key. The assistant itself can compare evidence against the rubric; OpenAI Decisions and Cloudflare Clef are optional advanced routes, never prerequisites. Do not inspect unrelated bots’ credentials.
+
+If search is unavailable, guide one concrete next step in everyday language, such as “Connect Exa so I can search for you,” using the host’s connection card or settings. Verify the connection before promising search. Let the person handle sign-in privately. Never ask for secrets in chat or claim a plugin is free or unlimited. Existing host/plugin limits apply. Obtain consent before adding a new paid service or extra charge; do not invent a dollar budget for ordinary connected-tool use.
+
+Read [workflow](references/workflow.md) and [host research](references/host-research.md) for the default path. Collect with actual host tools, assess against the same rubric, then import the saved evidence to generate the full radar report without provider keys. Handle file/runtime setup quietly. Read [advanced API setup](references/setup.md) only for a requested independent API run or an actual capability gap. An API-only `doctor` result does not block connected-tool research. The fictional offline `demo` is optional, not an onboarding gate.
 
 ## Define the work
 
@@ -26,7 +30,7 @@ Profiles can be incomplete or stale. Preserve unknown qualifications, availabili
 
 ## Research
 
-Read [workflow](references/workflow.md) and adapt [example-plan.json](references/example-plan.json). Use a `people` collection for public candidate profiles and separate collections for employer or talent-market context when useful. The skill uses the user's Exa account; it does not connect to Omnimatch people, company, salary or labour-market databases.
+Read [workflow](references/workflow.md) and adapt [example-plan.json](references/example-plan.json). Use a `people` collection for public candidate profiles and separate collections for employer or talent-market context when useful. Use connected search tools or the user’s own Exa account; it does not connect to Omnimatch people, company, salary or labour-market databases.
 
 Derive three to five independently answerable score dimensions from the role's actual work, such as relevant delivery, skill evidence and stakeholder responsibilities. Set required only for an explicit lawful job requirement. Keep missing evidence separate from score levels. Fit is a research aid, not a probability of performance, acceptance or retention. Apply the same criterion wording and weights to every profile; a revised role needs a new plan rather than pretending old results were reassessed.
 
@@ -34,7 +38,9 @@ Merge people only when identity and career evidence support the same person. A s
 
 For salary context, use public primary sources with survey year, geography, occupation, sample and pay basis. UK employee benchmarks do not establish a candidate's expectations, freelance rates or another country's market. Do not fabricate benchmark precision when public evidence is absent.
 
-Run `inspect --plan /absolute/role-plan.json` and tell the user the brief, providers and request estimates. Use a budget already authorised, or obtain the missing budget decision before paid work:
+For normal connected-tool research, follow [host research](references/host-research.md): execute the plan with available search/fetch tools, save passages and justified rubric levels, and use `import` to render. Do not run the direct-API runner or expose its setup questions on this path.
+
+The following applies only to an explicitly chosen direct-API run. Run `inspect --plan /absolute/role-plan.json` and tell the user the brief, providers and request estimates. Use a budget already authorised, or obtain the missing budget decision before paid work:
 
 ```sh
 node "$RECRUITER" run --plan /absolute/role-plan.json --out /absolute/recruiter-runs/role

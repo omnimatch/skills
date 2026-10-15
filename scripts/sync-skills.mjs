@@ -171,11 +171,13 @@ for (const variant of variants) {
   for (const file of [
     'scripts/lib/files.mjs',
     'scripts/lib/engine.mjs',
+    'scripts/lib/host.mjs',
     'scripts/lib/plan.mjs',
     'scripts/lib/providers.mjs',
     'scripts/lib/report.mjs',
     'references/setup.md',
     'references/workflow.md',
+    'references/host-research.md',
     'references/host-output.md',
   ])
     await writeFile(

@@ -10,4 +10,4 @@ Prefer a working interactive preview when available. Always retain the self-cont
 
 [Install Day Tripper in Grok Bot](https://x.ai/bot/2oFg1i480oDW6f-UuLTiN).
 
-Published 15 October 2026 from the reviewed version 2 draft. The bot ran the fictional v0.3.0 demo on its own Node 24 computer and checked the browser report, including the itinerary. Its export contains the generic profile and day-tripper, day-tripper-setup and day-tripper-getting-started skills, with no memories, credentials, private travel information, plugins or routines. Coordinates in the demo are synthetic. Native interactive chat rendering was not verified; the HTML report remains openable.
+Published 15 October 2026 from the reviewed version 2 draft. The bot ran the fictional v0.4.0 demo on its own Node 24 computer and checked the browser report, including the itinerary. Its export contains the generic profile and day-tripper, day-tripper-setup and day-tripper-getting-started skills, with no memories, credentials, private travel information, plugins or routines. Coordinates in the demo are synthetic. Native interactive chat rendering was not verified; the HTML report remains openable.

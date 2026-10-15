@@ -1,6 +1,6 @@
 # Omnimatch skills
 
-Free agent recipes from [Omnimatch](https://omnimatch.ai). Run them in your own file-capable agent, with your own API keys. No Omnimatch account, databases, hosted app or MCP server is required.
+Free agent recipes from [Omnimatch](https://omnimatch.ai). Run them in your own file-capable agent, with your connected search tools or your own API accounts. No Omnimatch account, databases, hosted app or MCP server is required.
 
 | Skill | What it does | Install |
 | --- | --- | --- |
@@ -9,13 +9,15 @@ Free agent recipes from [Omnimatch](https://omnimatch.ai). Run them in your own 
 | [Recruiter](skills/recruiter/SKILL.md) | Compare public professional evidence against a hiring brief for human review | `npx skills add omnimatch/skills --skill recruiter` |
 | [Day Tripper](skills/day-tripper/SKILL.md) | Find ideas and build a dated day plan with an itinerary and sourced route sketch | `npx skills add omnimatch/skills --skill day-tripper` |
 
-Then ask your agent to use the installed skill, guide setup and research your request. The first conversation brings together provider setup, your brief and a run budget. Keys go into a private terminal or your secret manager, never chat.
+Then tell the agent what you want to find. It asks about your goal and uses connected search tools, including the Exa plugin on Grok. It handles report setup in the background. If a connection is missing, it guides that one step in plain language.
 
 ![The interactive research radar and searchable collection](docs/prospector-report.png)
 
 ## What you need
 
-Node 22+ (24 recommended), Exa search and your choice of OpenAI Decisions or Cloudflare Clef. The recipes are free; API use is billed by those providers. An existing assistant subscription does not automatically provide API entitlement.
+A file-capable agent with web research tools. Connected Exa is preferred; suitable host search tools also work. The assistant compares the evidence itself, so a separate evaluator account is not required. Connected-service permissions, limits and charges still apply. Node 22+ (24 recommended) runs the offline report tools; the agent checks this quietly.
+
+An optional independent API runner supports your own Exa plus OpenAI Decisions or Cloudflare Clef accounts and an authorised spending ceiling. This advanced route is separate from ordinary connected-tool use. See the installed skill’s setup reference; secrets never go in chat.
 
 Each installed skill includes its own runner and prebuilt React report. Recipients do not run npm install or compile the interface. Codex and Claude Code can run the scripts where command execution and files are available. A ChatGPT session needs those capabilities; a chat-only session cannot execute a local skill.
 
@@ -38,7 +40,7 @@ Prebuilt [downloadable demonstrations](docs/REPORTS.md) are also available witho
 
 ## Research that stays explorable
 
-Each skill guides a brief, plans separate source collections, saves evidence and assesses results against a consistent rubric. Missing facts stay unknown. Checkpoints preserve completed work, conservative request ceilings keep spending decisions visible, and failed or lost requests require explicit paid retries. Follow-up questions read saved evidence before starting fresh discovery.
+Each skill guides a brief, plans separate source collections, saves evidence and assesses results against a consistent rubric. Missing facts stay unknown. Connected-tool research saves source passages, search provenance and justified rubric judgments as local snapshots. The optional API runner additionally checkpoints each request and applies conservative request ceilings; failed or lost paid requests need explicit retries. Follow-up questions read saved evidence before starting fresh discovery.
 
 The initial collector deduplicates exact canonical URLs. Different pages about one company, person, vacancy or venue can remain separate. Event hits are listing pages until occurrence details are verified. Scores describe fit to a brief and support human review; they are not calibrated outcome probabilities. Local request ceilings are estimates; provider account spending limits remain the final billing boundary.
 
@@ -46,7 +48,7 @@ No skill automatically sends outreach, applies for jobs, makes hiring decisions,
 
 ## Grok Bot templates
 
-Use the [Grok Bot guide](templates/grok/README.md) for Prospector and the companion recipes for [Job Scout](templates/grok/job-scout/README.md), [Recruiter](templates/grok/recruiter/README.md) and [Day Tripper](templates/grok/day-tripper/README.md). Each template bootstraps public code on the recipient bot's own computer and uses that person's keys. Custom scripts and private computer state do not transfer with a native template. An openable browser report is preserved when embedded chat rendering is unavailable.
+Use the [Grok Bot guide](templates/grok/README.md) for Prospector and the companion recipes for [Job Scout](templates/grok/job-scout/README.md), [Recruiter](templates/grok/recruiter/README.md) and [Day Tripper](templates/grok/day-tripper/README.md). Each template bootstraps public report tools on the recipient bot’s own computer and uses that person’s connected search tools. It includes the Exa plugin where supported; each recipient connects their own account. Custom scripts and private computer state do not transfer with a native template. An openable browser report is preserved when embedded chat rendering is unavailable.
 
 ## Develop
 

@@ -10,4 +10,4 @@ Prefer a working interactive preview when available. Always retain the self-cont
 
 [Install Recruiter in Grok Bot](https://x.ai/bot/LY-A0Dq9htK2xHtxaiaT0).
 
-Published 15 October 2026 after the bot ran the fictional demo on its own Node 24 computer and checked the browser report. The reviewed export contains the generic profile, two generic role/privacy conventions and the namespaced recruiter, recruiter-setup and recruiter-getting-started skills. It includes no private hiring material, credentials, plugins or routines. Recipients bootstrap public v0.3.0 code. Native interactive rendering inside chat was not verified; the HTML report remains openable.
+Published 15 October 2026 after the bot ran the fictional demo on its own Node 24 computer and checked the browser report. The reviewed export contains the generic profile, two generic role/privacy conventions and the namespaced recruiter, recruiter-setup and recruiter-getting-started skills. It includes no private hiring material, credentials, plugins or routines. Recipients bootstrap public v0.4.0 code. Native interactive rendering inside chat was not verified; the HTML report remains openable.

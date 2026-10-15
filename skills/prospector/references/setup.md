@@ -1,6 +1,8 @@
-# Guided setup
+# Advanced direct-API setup
 
-Ask for the user's provider choice and budget together. Explain that the recipe is free and API usage belongs to their accounts. Reuse existing explicitly supplied environment variables. Do not inspect unrelated repositories or credential stores.
+This reference is for a requested independent API run, not normal first-use onboarding. Prefer connected host tools plus the assistant’s own assessment and the offline `import` path in [host research](host-research.md). Missing doctor values do not block that route. Keep runtime and provider diagnostics internal. Explain an actual blocker in plain language, with one recovery action.
+
+For a direct-API run, establish the authorised spending ceiling and choose the appropriate available route. Explain a provider choice only when the user needs to make one; do not present unexplained vendor/model choices as the opening question. Explain that the recipe is free and API usage belongs to their accounts. Reuse existing explicitly supplied environment variables. Do not inspect unrelated repositories or credential stores.
 
 Requirements: Node 22+, an agent with file and command execution, Exa for search, and one evaluator. Node 24 is recommended. The installer copies scripts and report assets; no runtime `npm install`, build, server, Omnimatch login or MCP connection is needed.
 

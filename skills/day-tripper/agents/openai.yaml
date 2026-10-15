@@ -1,4 +1,4 @@
 interface:
   display_name: "Day Tripper"
   short_description: "Find ideas and plan a practical day out"
-  default_prompt: "Use $day-tripper to guide my setup, research my request and show an interactive evidence report."
+  default_prompt: "Use $day-tripper to plan a day out and show an interactive evidence report."

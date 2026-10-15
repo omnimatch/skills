@@ -1,5 +1,11 @@
 # Plan and output contract
 
+## Choose the execution path quietly
+
+Default: use the host’s connected Exa or suitable web tools to collect evidence, and the host assistant to assess it. Follow [host research](host-research.md), then use `import` to save and render. No additional search/evaluator API keys are required by the importer. Tool permissions, account limits and charges still apply.
+
+Optional: the direct `run` command automates Exa plus Decisions/Clef and needs private API setup and an approved spending ceiling. Do not use its doctor result to decide whether a connected plugin is usable. The API-specific details below apply only to that route.
+
 ## Plan
 
 `example-plan.json` is a complete editable example. Run `example --out plan.json` to copy it. Author the plan for the actual user; do not run the example as if it were their request.

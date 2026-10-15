@@ -1,6 +1,6 @@
 ---
 name: day-tripper
-description: Plan a worthwhile day out using current public venue and event evidence and the user's own API keys. Guides setup, offers a few ideas, chooses an anchor and produces an interactive comparison report, timed itinerary and a route sketch when coordinates are sourced. Use for solo, couple, family or group day trips; never book or buy automatically.
+description: Plan a worthwhile day out using current public venue and event evidence and connected search tools. Guides setup, offers a few ideas, chooses an anchor and produces an interactive comparison report, timed itinerary and a route sketch when coordinates are sourced. Use for solo, couple, family or group day trips; never book or buy automatically.
 license: MIT
 ---
 
@@ -10,9 +10,15 @@ Turn a vague idea into a practical day out. Be opinionated: pick a favourite and
 
 Resolve `scripts/day-tripper.mjs` relative to this file and use the absolute path as `TRIPPER`. Node 22+ is required. The runner and interactive report are prepackaged; no runtime npm install is needed.
 
-## Guided setup
+## Start with the person’s goal
 
-Run `node "$TRIPPER" doctor`. Read [setup](references/setup.md) if incomplete and guide one conversation through Exa, OpenAI Decisions or Cloudflare Clef, and a per-run budget. Use `setup` in a user-visible private terminal or non-interactive setup from securely supplied environment variables. Never ask for keys in chat, read unrelated credential stores or assume an assistant subscription provides API access. Doctor checks local readiness without network calls; the first authorised request exercises provider entitlement. Offer `demo --out DIRECTORY` for a fictional offline preview without keys or charges.
+Respond in plain language and reuse what the person has already told you. For an unqualified “Are we ready?”, say “Yes — where are you starting from, and which day would you like to go?” unless an actual attempt has established a blocker. Ask only for missing facts that affect the research. Do not make users choose an evaluator, model, runtime, API or numbered budget before discussing their goal. Do not narrate routine installation or readiness checks.
+
+Quietly inspect the host’s available tools. Prefer its connected Exa plugin; use the host’s other supported web search when suitable. On Grok, discover the installed Exa search/fetch skills and actual tools, rather than demanding a separate Exa API key. The assistant itself can compare evidence against the rubric; OpenAI Decisions and Cloudflare Clef are optional advanced routes, never prerequisites. Do not inspect unrelated bots’ credentials.
+
+If search is unavailable, guide one concrete next step in everyday language, such as “Connect Exa so I can search for you,” using the host’s connection card or settings. Verify the connection before promising search. Let the person handle sign-in privately. Never ask for secrets in chat or claim a plugin is free or unlimited. Existing host/plugin limits apply. Obtain consent before adding a new paid service or extra charge; do not invent a dollar budget for ordinary connected-tool use.
+
+Read [workflow](references/workflow.md) and [host research](references/host-research.md) for the default path. Collect with actual host tools, assess against the same rubric, then import the saved evidence to generate the full radar report without provider keys. Handle file/runtime setup quietly. Read [advanced API setup](references/setup.md) only for a requested independent API run or an actual capability gap. An API-only `doctor` result does not block connected-tool research. The fictional offline `demo` is optional, not an onboarding gate.
 
 ## Ideas first
 
@@ -22,11 +28,13 @@ Bring three to five varied ideas with personality: what it is, why it is worth g
 
 ## Collect and compare
 
-Read [workflow](references/workflow.md) and adapt [example-plan.json](references/example-plan.json). Use `places` for venue/activity source pages and `events` for dated listing sources. Keep their units separate. Exa provides public web discovery with the person's own key; no Omnimatch places, hygiene, events or other databases are used.
+Read [workflow](references/workflow.md) and adapt [example-plan.json](references/example-plan.json). Use `places` for venue/activity source pages and `events` for dated listing sources. Keep their units separate. Connected search tools provide public web discovery; no Omnimatch places, hygiene, events or other databases are used.
 
 Choose three to five meaningful criteria for the current party and brief, such as interests, pace, practical access and budget fit. Missing dates, opening hours, prices, ticket availability and travel times are unknown, never invented scores. A recurring event brand does not verify an occurrence. User hard limits stay hard; flexibility must be explicit.
 
-Run `inspect --plan /absolute/day-plan.json`, explain the providers and request estimates, and use an authorised budget. Obtain a missing budget decision before paid execution:
+For normal connected-tool research, follow [host research](references/host-research.md): execute the plan with available search/fetch tools, save passages and justified rubric levels, and use `import` to render. Do not run the direct-API runner or expose its setup questions on this path.
+
+The following applies only to an explicitly chosen direct-API run. Run `inspect --plan /absolute/day-plan.json`, explain the providers and request estimates, and use an authorised budget. Obtain a missing budget decision before paid execution:
 
 ```sh
 node "$TRIPPER" run --plan /absolute/day-plan.json --out /absolute/day-trip-runs/brief

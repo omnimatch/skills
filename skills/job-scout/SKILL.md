@@ -1,6 +1,6 @@
 ---
 name: job-scout
-description: Find worthwhile jobs and credible routes into employers using the candidate's own goals and provider keys. Guides setup, researches vacancies, recruiters and relevant communities, creates an interactive evidence report and keeps applications organised in local files. Use for candidate-side job search and applications, not employer-side hiring decisions.
+description: Find worthwhile jobs and credible routes into employers using the candidate’s own goals and connected search tools. Guides setup, researches vacancies, recruiters and relevant communities, creates an interactive evidence report and keeps applications organised in local files. Use for candidate-side job search and applications, not employer-side hiring decisions.
 license: MIT
 ---
 
@@ -10,11 +10,15 @@ Work for the candidate. Help them decide which opportunities are worth pursuing 
 
 Resolve `scripts/job-scout.mjs` relative to this file. Use that absolute path as `SCOUT` in commands. Node 22+ is required; no runtime npm install or UI build is needed.
 
-## One guided setup
+## Start with the person’s goal
 
-Run `node "$SCOUT" doctor`. Reuse configuration explicitly supplied for this skill; do not search other projects or bots for keys. Read [setup](references/setup.md) when incomplete. Guide the user through Exa and either OpenAI Decisions or Cloudflare Clef, plus one per-run budget. Use `setup` in a user-visible private terminal or `setup --non-interactive --provider clef|openai --budget-usd AMOUNT` from securely supplied environment variables. Never ask for keys or host login tokens in chat. A ChatGPT subscription does not prove Decisions entitlement. Doctor checks local readiness without network calls; the first authorised research call tests provider access.
+Respond in plain language and reuse what the person has already told you. For an unqualified “Are we ready?”, say “Yes — what kind of role are you looking for, and where?” unless an actual attempt has established a blocker. Ask only for missing facts that affect the research. Do not make users choose an evaluator, model, runtime, API or numbered budget before discussing their goal. Do not narrate routine installation or readiness checks.
 
-Offer `demo --out DIRECTORY` to explore the fictional report without keys or API calls. The recipe is free; provider usage belongs to the user's accounts.
+Quietly inspect the host’s available tools. Prefer its connected Exa plugin; use the host’s other supported web search when suitable. On Grok, discover the installed Exa search/fetch skills and actual tools, rather than demanding a separate Exa API key. The assistant itself can compare evidence against the rubric; OpenAI Decisions and Cloudflare Clef are optional advanced routes, never prerequisites. Do not inspect unrelated bots’ credentials.
+
+If search is unavailable, guide one concrete next step in everyday language, such as “Connect Exa so I can search for you,” using the host’s connection card or settings. Verify the connection before promising search. Let the person handle sign-in privately. Never ask for secrets in chat or claim a plugin is free or unlimited. Existing host/plugin limits apply. Obtain consent before adding a new paid service or extra charge; do not invent a dollar budget for ordinary connected-tool use.
+
+Read [workflow](references/workflow.md) and [host research](references/host-research.md) for the default path. Collect with actual host tools, assess against the same rubric, then import the saved evidence to generate the full radar report without provider keys. Handle file/runtime setup quietly. Read [advanced API setup](references/setup.md) only for a requested independent API run or an actual capability gap. An API-only `doctor` result does not block connected-tool research. The fictional offline `demo` is optional, not an onboarding gate.
 
 ## Understand the candidate
 
@@ -34,7 +38,9 @@ Check vacancies against original employer/ATS pages, watching for closure, a dif
 
 For pay or labour-market context, use current public primary sources. State survey year, geography and pay basis; do not present a UK employee benchmark as a contractor rate, a Spanish salary or an individual's expected pay. If that evidence cannot be obtained, keep the gap visible and continue with the opportunity research.
 
-Run `inspect --plan /absolute/plan.json`, explain the plan, providers and request estimates, and honour the user's authorised budget. Obtain a missing budget decision before paid execution. Run:
+For normal connected-tool research, follow [host research](references/host-research.md): execute the plan with available search/fetch tools, save passages and justified rubric levels, and use `import` to render. Do not run the direct-API runner or expose its setup questions on this path.
+
+The following applies only to an explicitly chosen direct-API run. Run `inspect --plan /absolute/plan.json`, explain the plan, providers and request estimates, and honour the user's authorised budget. Obtain a missing budget decision before paid execution. Run:
 
 ```sh
 node "$SCOUT" run --plan /absolute/plan.json --out /absolute/job-search-runs/brief
